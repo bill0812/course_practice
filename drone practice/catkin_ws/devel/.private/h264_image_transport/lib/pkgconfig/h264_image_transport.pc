@@ -1,0 +1,8 @@
+prefix=/home/bill/Desktop/drone_practice/catkin_ws/devel/.private/h264_image_transport
+
+Name: h264_image_transport
+Description: Description of h264_image_transport
+Version: 0.0.0
+Cflags: -I/home/bill/Desktop/drone_practice/catkin_ws/devel/.private/h264_image_transport/include -I/home/bill/Desktop/drone_practice/catkin_ws/src/h264_image_transport/include
+Libs: -L/home/bill/Desktop/drone_practice/catkin_ws/devel/.private/h264_image_transport/lib -lh264_image_transport
+Requires: message_runtime std_msgs pluginlib

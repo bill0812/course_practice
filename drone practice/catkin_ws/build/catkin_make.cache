@@ -1,0 +1,2 @@
+beginner_tutorials:h264_image_transport:tello_driver
+-DCATKIN_DEVEL_PREFIX=/home/bill/Desktop/drone_practice/catkin_ws/devel -DCMAKE_INSTALL_PREFIX=/home/bill/Desktop/drone_practice/catkin_ws/install -G Unix Makefiles
