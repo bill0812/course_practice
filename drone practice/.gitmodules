@@ -1,0 +1,6 @@
+[submodule "TelloPy"]
+	path = TelloPy
+	url = git@github.com:hanyazou/TelloPy.git
+[submodule "DroneBlocks-Tello-Python"]
+	path = DroneBlocks-Tello-Python
+	url = https://github.com/dbaldwin/DroneBlocks-Tello-Python.git
