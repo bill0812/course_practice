@@ -1,0 +1,106 @@
+.header{
+    background-image: url("taipei.jpeg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100% calc(100% + 150px);
+}
+.header .top-photo{
+    width: 100%;
+    height: 600px;
+    opacity: 0.75;
+}
+.subtitle{
+    text-align: center;
+    font-size: 40px;
+    padding-bottom: 40px;
+}
+.header-second-area{
+    padding: 75px;
+}
+.header-second-area h4{
+    text-align: center;
+    font-size: 30px;
+}
+.icon{
+    margin: auto;
+    width: 100px;
+    margin-bottom: 30px;
+    margin-top: 30px;
+}
+.header h3{
+    margin: 0;
+    text-align: center;
+    font-size: 60px;
+    padding-top: 250px;
+}
+#back,#front{
+    display: none;
+}
+.each-title{
+    cursor: pointer;
+}
+.each-detail-mom , .each-content-mom{
+    display: none;
+}
+.choice{
+    cursor: pointer;
+}
+.choice:hover{
+    background-color: #dcdcdc57;
+    border-radius: 50%;
+}
+form{
+    margin: 0;
+}
+.page-btn{
+    height: 75px;
+    width: 200px;
+    border-radius: 20px;
+    font-size: 30px;
+    background-color: #f0dc8ba3;
+    border: #f0dc8ba3;
+}
+.page-btn:focus{
+    outline: none;
+}
+.page-btn:hover{
+    background-color: #f0dc8b66;
+}
+#back{
+    float: left;
+}
+#front{
+    float: right;
+}
+.btn-area{
+    width: 80%;
+    margin-left: 10%;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+.body-title{
+    text-align: center;
+    font-size: 30px;
+    padding-bottom: 30px;
+    padding-top: 30px;
+}
+.each-title , .each-content-mom , .each-detail-mom{
+    text-align: center;
+}
+.body{
+    background-color: #dcdcdc57;
+}
+#content > div:nth-child(odd){
+    background-color: #d89c4f1c;
+}
+.each-content-mom , .each-detail-mom{
+    height: 300px;
+    overflow: scroll;
+    padding: 30px;
+    padding-left: 50px;
+    padding-right: 50px;
+    margin-bottom: 30px;
+}
+.each-content-mom p{
+    font-size: 20px;
+}

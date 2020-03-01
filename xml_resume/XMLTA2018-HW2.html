@@ -1,0 +1,1624 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet">
+        <title>政治大學資訊科學所碩士班甄試就學計畫</title>
+    </head>
+    <style>
+        .nav .open>a, .nav .open>a:focus, .nav .open>a:hover{
+            background-color: rgba(187, 187, 187, 0.7);
+            border-color: rgba(187, 187, 187, 0.7);
+            color: black;
+            box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.15);
+        }
+        body{
+            font-family: 'Noto Sans', sans-serif !important;
+        }
+        .header{
+            background-color: rgba(187, 187, 187, 0.7);
+            padding-left: 30px;
+            padding-right: 30px;
+            padding-top: 15px;
+            padding-bottom: 15px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            width: 100%;
+            transition: top 0.3s;
+        }
+        .header button.navbar-toggle{
+            background-color: #a9a9a985;
+            transition: 1s;
+            -webkit-transition: 1s; /* Safari */
+        }
+        .header button.navbar-toggle:hover{
+            box-shadow: 0px 2px 5px 2px #a9a9a985;
+        }
+        .header button.navbar-toggle .icon-bar{
+            background-color: white;
+        }
+        .brand-div span{
+            float: left;
+            height: 20px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            font-size: 30px;
+        }
+        .header > nav{
+            position: relative;
+            margin: 0;
+        }
+        .header > nav > div > .nav{
+            float: right;
+        }
+        a.brand-custom{
+            font-size: 40px;
+        }
+        a.brand-custom:hover{
+            color: black;
+            background-color: transparent !important;
+            font-size: 40px;
+        }
+        nav a{
+            color: black;
+            font-size: 18px;
+        }
+        nav a:hover{
+            color: black;
+            background-color: transparent !important;
+            box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.15);
+        }
+        .header-nav-ul{
+            margin: 0;
+            padding: 0;
+        }
+        .header-nav-ul li{
+            display: inline;
+        }
+        .body{
+            top: 82px;
+            position: relative;
+        }
+        .start-section{
+            background-image: url(https://imgur.com/ULJ3AxU.png);
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+            display: block;
+            position: relative;
+            height: calc( 100vh - 82px );
+        }
+        .start-section h2, .start-section h4{
+            margin: 0;
+            text-align: center;
+        }
+        h2.start-h2{
+            font-size: 75px;
+            padding-top: calc( (100vh - 200px)/2 - 300px );
+            padding-bottom: 50px;
+            margin-top: 15px;
+        }
+        h4.start-h4{
+            font-size: 30px;
+        }
+        h4.start-h4 span{
+            position: relative;
+            top: 3px;
+        }
+        h4.start-h4 span:nth-child(1){
+            margin-right: 10px;
+        }
+        h4.start-h4 span:nth-child(2){
+            margin-left: 10px;
+        }
+        .dark-theme{
+            background-color: whitesmoke;
+        }
+        .resume{
+            transition: all 0.2s linear;
+        }
+        .resume > .row, .personal > .row, .plan > .row, .history > .row, .swot > .row, .grade > .row {
+            margin: 0;
+        }
+        .resume > .row > div, .personal > .row > div, .plan > .row > div, .history > .row > div, .swot > .row > div, .grade > .row > div{
+            padding-top: 30px;
+            padding-bottom: 50px;
+        }
+        .resume > .row::after, .personal > .row::after, .plan > .row::after, .history > .row::after, .swot > .row::after{
+            border-bottom: 5px solid rgba(0, 0, 0, 0.5);
+            border-style: dashed none;
+            border-top: none;
+            box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.34);
+            width: 80%;
+            margin-left: 10%;
+        }
+        .profile-title{
+            text-align: center;
+            font-size: 50px;
+            padding-top: 20px;
+            padding-bottom: 30px;
+        }
+        .profile-title span{
+            margin-right: 20px;
+            top: 7px;
+        }
+        .profile-title, .profile-resume , .profile-personal, .profile-ability{
+            text-align: center;
+            margin: 0;
+        }
+        .profile-ability{
+            margin-bottom: 10px;
+        }
+        .profile-ability span{
+            margin-right: 15px;
+            top: 3px;
+        }
+        .profile-resume{
+            text-align: left;
+        }
+        .profile-resume, .profile-personal{
+            font-size: 30px;
+            padding-bottom: 15px;
+            padding-top: 15px;
+            width: 75%;
+            margin: auto;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .profile-resume span{
+            margin-right: 15px;
+            top: 5px;
+        }
+        .personal h2, .personal h2{
+            text-align: center;
+        }
+        .progress-wrapper{
+            padding-left: 50px;
+            padding-right: 50px;
+            padding-bottom: 30px;
+        }
+        .progress-title{
+            font-size: 25px;
+        }
+        .progress{
+            background-color: whitesmoke;
+            box-shadow: inset 0px 0px 20px 5px rgba(255, 255, 255, 0.5);
+            margin: 0;
+            height: 40px;
+            margin-bottom: 20px;
+            margin-top: 10px;
+        }
+        .progress-bar{
+            background-color: white;
+            color: black;
+            box-shadow: inset 0px 0px 20px 0px rgba(0, 0, 0, 0.5);
+            font-size: 20px;
+            line-height: 40px;
+        } 
+        .timeline {
+            position: relative;
+            width: 100%;
+            margin: 0 auto;
+            display: inline-block;
+            margin-top: 30px;
+            margin-bottom: 30px;
+        }
+        .timeline:after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background-color: whitesmoke;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+        }
+        .timeline .container {
+            position: relative;
+            background-color: inherit;
+            width: 50%;
+        }
+        .timeline .container:after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            right: -12px;
+            background-color: white;
+            border: 4px solid whitesmoke;
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+        .timeline .left {
+            right: 25%;
+        }
+        .timeline .right {
+            left: 25%;
+        }
+        .timeline .left::before {
+            content: " ";
+            height: 0;
+            position: absolute;
+            top: 22px;
+            width: 0;
+            z-index: 1;
+            right: 30px;
+            border: medium solid whitesmoke;
+            border-width: 10px 0 10px 10px;
+            border-color: transparent transparent transparent whitesmoke;;
+        }
+        .timeline .right::before {
+            content: " ";
+            height: 0;
+            position: absolute;
+            top: 22px;
+            width: 0;
+            z-index: 1;
+            left: 30px;
+            border: medium solid whitesmoke;
+            border-width: 10px 10px 10px 0;
+            border-color: transparent whitesmoke transparent transparent;
+        }
+        .timeline .right::after {
+            left: -13px;
+        }
+        .timeline .content {
+            padding: 20px 30px;
+            background-color: whitesmoke;
+            position: relative;
+            border-radius: 6px;
+            width: calc(100% - 25px );
+            left: 25px;
+        }
+        .left .content{
+            right: 25px;
+            left: 0;
+        }
+        .timeline .content p{
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            font-size: 18px;
+        }
+        .dark-theme .timeline .content, .dark-theme .timeline:after{
+            background-color: white;
+        }
+        .dark-theme .timeline .right::before, .dark-theme .timeline .left::before{
+            border: medium solid white;
+        }
+        .dark-theme .timeline .right::before{
+            border-width: 10px 10px 10px 0;
+            border-color: transparent white transparent transparent;
+        }
+        .dark-theme .timeline .left::before{
+            border-width: 10px 0 10px 10px;
+            border-color: transparent transparent transparent white;
+        }
+        .dark-theme .timeline .container:after{
+            background-color: whitesmoke;
+            border: 4px solid white;
+        }
+        .profile-personal{
+            font-size: 18px;
+            white-space: inherit;
+            overflow: auto;
+            text-overflow: unset;
+            line-height: 30px;
+            letter-spacing: 2.5px;
+        }
+        .start-pic{
+            width: 250px;
+            margin: auto;
+            padding-top: 100px;
+            position: relative;
+        }
+        .plan-h2{
+            margin-bottom: 15px;
+        }
+        .plan-h2 span{
+            margin-right: 15px;
+            position: relative;
+            top: 3px;
+        }
+        .plan-p span ,.plan-p p{
+            font-size: 18px;
+        }
+        .plan-p span{
+            width: 100%;
+            text-align: center;
+        }
+        .glyphicon-calendar:before, .glyphicon-pushpin:before{
+            margin-right: 10px;
+            position: relative;
+            top: 2px
+        }
+        .plan-p p{
+            white-space: inherit !important;
+            overflow: auto !important;
+            text-overflow: unset !important;
+            text-align: center;
+            margin: 10px 5px;
+        }
+        .plan-p p h5{
+            text-align: center;
+        }
+        .plan-row-first{
+            padding-bottom: 10px;
+        }
+        .plan-p-row{
+            border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+            border-style: dashed none;
+            border-top: none;
+        }
+        .carousel{
+            height: 500px;
+            width: 80%;
+            margin: auto;
+        }
+        .carousel-inner{
+            height: 100%;;
+        }
+        .carousel-inner img{
+            width: 100%;
+            height: 100% !important;
+        }
+        .carousel p{
+            font-size: 20px;
+            font-weight: 500;
+        }
+        .swot-row{
+            margin-bottom: 50px;
+        }
+        .swot-row::after{
+            border-bottom: 5px solid rgba(0, 0, 0, 0.5);
+            border-style: dashed none;
+            border-top: none;
+            box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.34);
+            width: 70%;
+            margin-left: 15%;
+            position: relative;
+            top: 15px;
+        }
+        .personal-swot-h3{
+            text-align: center;
+            width: fit-content;
+            margin: auto;
+            padding-bottom: 15px;
+            border-bottom: 3px solid black;
+            border-style: dashed none;
+            border-top: none;
+        }
+        .personal-swot-h3 span{
+            margin-right: 15px;
+            position: relative;
+            top: 3px;
+        }
+        .personal-swot-p{
+            text-align: center;
+            font-size: 18px;
+            margin: 0;
+            padding-top: 15px;
+            padding-bottom: 10px;
+        }
+        .grade-h2{
+            text-align: center;
+        }
+        .grade-h2 span{
+            position: relative;
+            margin-right: 15px;
+            top: 3.5px;
+        }
+        @media(max-width:950px) {
+            a.brand-custom{
+                font-size: 30px;
+            }
+            a.brand-custom:hover{
+                font-size: 30px;
+            }
+            nav a{
+                font-size: 15px;
+            }
+            nav a:hover{
+                font-size: 18px;
+            }
+        } 
+        @media(max-width:875px) {
+            a.brand-custom{
+                font-size: 20px;
+            }
+            a.brand-custom:hover{
+                font-size: 20px;
+            }
+            nav a{
+                font-size: 14px;
+            }
+            nav a:hover{
+                font-size: 15px;
+            }
+            .brand-div span{
+                padding-top: 15px;
+                padding-bottom: 15px;
+                font-size: 20px;
+            }
+        }   
+        @media(max-width:768px) {
+            .profile-resume{
+                width: 80%;
+            }
+        }
+        @media(max-width: 300px) {
+            .timeline::after {
+                left: 31px;
+            }
+            .timeline .container {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            .timeline .container::before {
+                left: 60px;
+                border: medium solid white;
+                border-width: 10px 10px 10px 0;
+                border-color: transparent white transparent transparent;
+            }
+            .timeline .left::after, .right::after {
+                left: 15px;
+            }
+            .timeline .right {
+                left: 0%;
+            }
+        }
+    </style>
+    <body>
+
+        <!-- for header -->
+        <div class="container-fluid header">
+            <nav class="navbar">  
+                <div class="navbar-header">
+                    <button class="navbar-toggle" data-toggle="collapse" data-target="#personalbar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <div class="brand-div">
+                        <span class="glyphicon glyphicon-hand-right"></span>
+                        <a class="navbar-brand brand-custom" href="#">叉叉叉</a>
+                    </div>
+                </div>
+                            
+                <div class="collapse navbar-collapse" id="personalbar">
+                    <ul class="nav navbar-nav">
+                        <li class="nav-item dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">履歷表
+                                <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#profile">基本資料</a></li>
+                                <li><a href="#school">學 歷</a></li>
+                                <li><a href="#ability">專 長</a></li>
+                                <li><a href="#history">學業經歷</a></li>
+                                <li><a href="#club">課外經歷</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">自傳
+                                <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#specialty">個人特質</a></li>
+                                <li><a href="#school-through">學業經歷</a></li>
+                                <li><a href="#outside-through">課外經歷</a></li>
+                                <li><a href="#conclusion">結 語</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#plan">未來規劃</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#history">歷年修課成果</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#swot">自我 SWOT 分析</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#grade">學業成績</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav> 
+        </div>
+        <div class="body">
+            <div class="start-section">
+                <div class="start-pic">
+                    <img class="img-responsive" src="https://imgur.com/Y2scOaT.png">
+                </div>
+                <h2 class="start-h2">
+                    叉叉叉
+                </h2>
+                <h4 class="start-h4">
+                    <span class="glyphicon glyphicon-hand-right"></span>
+                    清華大學資訊工程學系學士班四年級
+                    <span class="glyphicon glyphicon-hand-left"></span>
+                </h4>
+            </div>
+            <div class="resume"  id="resume">
+                <div class="row" id="profile">
+                    <div class="col-xs-12 dark-theme">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="col-sm-12">
+                                    <h2 class="profile-title">履歷表</h2>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <h2 class="profile-title"><span class="glyphicon glyphicon-hand-right"></span>基本資料</h2>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <h3 class="profile-resume"><span class="glyphicon glyphicon-user"></span>姓名：叉叉叉</h4>
+                            </div>
+                            <div class="col-lg-6">
+                                <h3 class="profile-resume"><span class="glyphicon glyphicon-edit"></span>性別：男</h4>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <h3 class="profile-resume"><span class="glyphicon glyphicon-phone"></span>聯絡電話：0900000000</h4>
+                            </div>
+                            <div class="col-lg-6">
+                                <h3 class="profile-resume"><span class="glyphicon glyphicon-envelope"></span>E-mail：ZZZXXXXX@gmail.com</h4>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <h3 class="profile-resume"><span class="glyphicon glyphicon-home"></span>通訊地址：叉叉叉叉叉叉叉叉叉</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" id="school">
+                    <div class="col-xs-12">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <h2 class="profile-title"><span class="glyphicon glyphicon-hand-right"></span>學歷</h2>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <h2 class="profile-personal">學校</h2>
+                            </div>
+                            <div class="col-xs-3">
+                                <h2 class="profile-personal">科系所</h2>
+                            </div>
+                            <div class="col-xs-3">
+                                <h2 class="profile-personal">修業年限</h2>
+                            </div>
+                            <div class="col-xs-3">
+                                <h2 class="profile-personal">肄業 / 畢業</h2>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <h2 class="profile-personal">清華大學</h2>
+                            </div>
+                            <div class="col-xs-3">
+                                <h2 class="profile-personal">資工系</h2>
+                            </div>
+                            <div class="col-xs-3">
+                                <h2 class="profile-personal">2010 – 2013</h2>
+                            </div>
+                            <div class="col-xs-3">
+                                <h2 class="profile-personal">肄業</h2>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <h2 class="profile-personal">臺南一中</h2>
+                            </div>
+                            <div class="col-xs-3">
+                                <h2 class="profile-personal">普通科</h2>
+                            </div>
+                            <div class="col-xs-3">
+                                <h2 class="profile-personal">2005 – 2007</h2>
+                            </div>
+                            <div class="col-xs-3">
+                                <h2 class="profile-personal">畢業</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" id="ability">
+                    <div class="col-xs-12 dark-theme">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <h2 class="profile-title"><span class="glyphicon glyphicon-hand-right"></span>專長</h2>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                        <h4 class="profile-ability"><span class="glyphicon glyphicon-tag"></span>語言種類</h4>
+                                    </div>
+                                </div>
+                                <div class="progress-wrapper">
+                                    <div class="progress-item">
+                                        <span class="progress-title">C</span>
+                                        <div class="progress">
+                                            <div class="progress-bar" role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="width: 30%">
+                                                <span class="progress-percent">30%</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="progress-item">
+                                        <span class="progress-title">C++</span>
+                                        <div class="progress">
+                                            <div class="progress-bar" role="progressbar" aria-valuenow="62" aria-valuemin="0" aria-valuemax="100" style="width: 62%">
+                                                <span class="progress-percent">62%</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="progress-item">
+                                        <span class="progress-title">JAVA</span>
+                                        <div class="progress">
+                                            <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" style="width: 90%">
+                                                <span class="progress-percent"> 90%</span>
+                                            </div>
+                                        </div> 
+                                    </div>
+                                    <div class="progress-item">
+                                        <span class="progress-title">OpenGL</span>
+                                        <div class="progress">
+                                            <div class="progress-bar" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 50%">
+                                                <span class="progress-percent">50%</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="progress-item">
+                                        <span class="progress-title">Javascript</span>
+                                        <div class="progress">
+                                            <div class="progress-bar" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%">
+                                                <span class="progress-percent">75%</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="progress-item">
+                                        <span class="progress-title">Unity</span>
+                                        <div class="progress">
+                                            <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" style="width: 90%">
+                                                <span class="progress-percent">90%</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="progress-item">
+                                        <span class="progress-title">Python</span>
+                                        <div class="progress">
+                                            <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
+                                                <span class="progress-percent">60%</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-6">
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                        <h4 class="profile-ability"><span class="glyphicon glyphicon-tag"></span>應用程式開發</h4>
+                                    </div>
+                                </div>
+                                <div class="progress-wrapper">
+                                    <div class="progress-item">
+                                        <span class="progress-title">Android App</span>
+                                        <div class="progress">
+                                            <div class="progress-bar" role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="width: 30%">
+                                                <span class="progress-percent">30%</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="progress-item">
+                                        <span class="progress-title">Windows 應用程式</span>
+                                        <div class="progress">
+                                            <div class="progress-bar" role="progressbar" aria-valuenow="62" aria-valuemin="0" aria-valuemax="100" style="width: 62%">
+                                                <span class="progress-percent">62%</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="progress-item">
+                                        <span class="progress-title">網頁程式</span>
+                                        <div class="progress">
+                                            <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" style="width: 90%">
+                                                <span class="progress-percent"> 90%</span>
+                                            </div>
+                                        </div> 
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-12">
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                        <h4 class="profile-ability"><span class="glyphicon glyphicon-tag"></span>3D 模型設計</h4>
+                                    </div>
+                                </div>
+                                <div class="progress-wrapper">
+                                    <div class="progress-item">
+                                        <span class="progress-title">3DS Max</span>
+                                        <div class="progress">
+                                            <div class="progress-bar" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 50%">
+                                                <span class="progress-percent">50%</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="progress-item">
+                                        <span class="progress-title">Sketchup（中華電信 3D 模型設計人才認證）</span>
+                                        <div class="progress">
+                                            <div class="progress-bar" role="progressbar" aria-valuenow="62" aria-valuemin="0" aria-valuemax="100" style="width: 62%">
+                                                <span class="progress-percent">62%</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" id="history">
+                    <div class="col-xs-12">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <h2 class="profile-title"><span class="glyphicon glyphicon-hand-right"></span>學業經歷</h2>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="timeline">
+                                    <div class="container left">
+                                        <div class="content">
+                                            <h2>2014</h2>
+                                            <p>獲選全國大專優秀青年全國代表（全校一名）</p>
+                                        </div>
+                                    </div>
+                                    <div class="container right">
+                                        <div class="content">
+                                            <h2>2013</h2>
+                                            <p>連續七學期獲書卷獎（累計系排名第一）</p>
+                                        </div>
+                                    </div>
+                                    <div class="container left">
+                                        <div class="content">
+                                            <h2>2013</h2>
+                                            <p>獲財團法人林熊徵學田基金會獎學金（全國 50 名）</p>
+                                        </div>
+                                    </div>
+                                    <div class="container right">
+                                        <div class="content">
+                                            <h2>2013</h2>
+                                            <p>獲朱順一合勤獎學金（全系兩名）</p>
+                                        </div>
+                                    </div>
+                                    <div class="container left">
+                                        <div class="content">
+                                            <h2>2013</h2>
+                                            <p>獲通訊大賽智慧終端實作組季軍，為校爭光，其中擔任隊長一職</p>
+                                        </div>
+                                    </div>
+                                    <div class="container right">
+                                        <div class="content">
+                                            <h2>2013</h2>
+                                            <p>獲創新應用大賽行動 APP 校園組優選，為校爭光，其中擔任隊長一職</p>
+                                        </div>
+                                    </div>
+                                    <div class="container left">
+                                        <div class="content">
+                                            <h2>2013</h2>
+                                            <p>獲清華大學資工系大學部最佳專題展優勝，其中擔任隊長一職</p>
+                                        </div>
+                                    </div>
+                                    <div class="container right">
+                                        <div class="content">
+                                            <h2>2012</h2>
+                                            <p>獲選台灣清華代表團團員，赴北京清華交換修習「程序設計訓練」獲滿分</p>
+                                        </div>
+                                    </div>
+                                    <div class="container left">
+                                        <div class="content">
+                                            <h2>2012</h2>
+                                            <p>通識課創立校園媒體「 清華異人堂 」</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" id="club">
+                    <div class="col-xs-12 dark-theme">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <h2 class="profile-title"><span class="glyphicon glyphicon-hand-right"></span>課外經歷</h2>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="timeline">
+                                    <div class="container left">
+                                        <div class="content">
+                                            <h2>2013</h2>
+                                            <p>擔任畢業生聯誼會會長，帶領團隊為在校畢業生籌畫各類畢業季活動</p>
+                                        </div>
+                                    </div>
+                                    <div class="container right">
+                                        <div class="content">
+                                            <h2>2013</h2>
+                                            <p>擔任清華大學坦尚尼亞教育志工團文書</p>
+                                        </div>
+                                    </div>
+                                    <div class="container left">
+                                        <div class="content">
+                                            <h2>2013</h2>
+                                            <p>參與國際志工基礎訓練營結業並經考評合格</p>
+                                        </div>
+                                    </div>
+                                    <div class="container right">
+                                        <div class="content">
+                                            <h2>2012</h2>
+                                            <p>擔任弦樂社社長，帶領社團為校舉辦多場跨社跨校大型音樂會</p>
+                                        </div>
+                                    </div>
+                                    <div class="container left">
+                                        <div class="content">
+                                            <h2>2013</h2>
+                                            <p>獲通訊大賽智慧終端實作組季軍，為校爭光，其中擔任隊長一職</p>
+                                        </div>
+                                    </div>
+                                    <div class="container right">
+                                        <div class="content">
+                                            <h2>2010</h2>
+                                            <p>擔任新生盃男子排球項目隊長，帶領系上排球隊獲冠軍</p>
+                                        </div>
+                                    </div>
+                                    <div class="container left">
+                                        <div class="content">
+                                            <h2>2013</h2>
+                                            <p>獲清華大學資工系大學部最佳專題展優勝，其中擔任隊長一職</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="personal" id="personal">
+                <div class="row" id="specialty">
+                    <div class="col-xs-12">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <h2 class="profile-title">自傳</h2>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <h2 class="profile-title"><span class="glyphicon glyphicon-hand-right"></span>個人特質</h2>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <p class="profile-personal">我來自台南，於安穩家庭成長，父母管教方式開明自由，使我擁有獨立和靈活思
+                                        考的能力。我是一個活潑樂觀、善於觀察人性的人，興趣是完善自我及人脈經營，擅
+                                        長排球、桌球，平時有閱讀與旅遊的嗜好，本身學習小提琴十餘年。
+                                         統合和執行能力強，常擔任團隊領導人，凡事全力以赴為我待人處事的原則，全
+                                        心投入事情中直到完臻更是我做研究的精神。貴校的學術風氣及地位是我一心嚮往的
+                                        目標，因此我相當渴求能有機會進入這個學術殿堂接受更進一步的專業知識訓練。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" id="school-through">
+                    <div class="col-xs-12 dark-theme">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <h2 class="profile-title"><span class="glyphicon glyphicon-hand-right"></span>學業經歷</h2>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <p class="profile-personal">目前就讀於資工系四年級。學業上我從不放過任何學習機會，將報告討論和專題
+                                        實作達到盡善盡美，抱持著積極正向的態度，享受與人合作解決問題的同舟共濟。
+                                         從大一起連續獲得七學期的書卷獎（累計系排名第一）、財團法人林熊徵學
+                                        田基金會獎學金（全國 50 名）和朱順一合勤獎學金（全系兩名），除獲得學術榮耀，
+                                        也肯定了我的能力及態度。積極參與課外活動為學校、社會貢獻更讓我於大四時獲選
+                                        為全國大專優秀青年全國代表（全校一名）。系上專題選擇李潤容教授作為指導教授
+                                        並擔任團隊領導，率隊獲得通訊大賽智慧終端實作組季軍、創新應用大賽行動 APP 校
+                                        園組優選、清大資工大學部最佳專題展優勝。與志同道合的夥伴組隊投稿參選寫作中
+                                        心世界糧食日科普主題寫作競賽，獲最高獎項優選獎。
+                                         同時也積極尋求校外增廣見聞的機會，2012 暑期獲選為「海峽兩岸首屆科技菁英
+                                        論壇 - 台灣清華代表團」一員，赴北京清華大學交換修習「程序設計訓練」獲滿分，
+                                        並於隔年擔任此代表團的台灣課程助教。通識課程「新聞媒體企劃」創立校園媒體「清
+                                        華異人堂」並擔任總編輯兼創意總監，任內管理團隊運作企劃和建構官方網站，帶領
+                                        隊伍奪得最佳人氣組別及最高分組別。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" id="outside-through">
+                    <div class="col-xs-12">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <h2 class="profile-title"><span class="glyphicon glyphicon-hand-right"></span>課外經歷</h2>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <p class="profile-personal">學業之外充分利用時間從事豐富的課外活動，大四時擔任畢業生聯誼會會長，帶
+                                    領團隊為在校畢業生籌畫各類畢業季活動。參加清華大學坦尚尼亞教育志工團，擔任
+                                     團隊文書，赴遙遠國度服務，改善當地人的未來，也訓練自我如何接受陌生環境的挑戰。大二時擔任弦樂社社長，帶領社團分別與新竹教育大學音樂系、清華樂集、清大
+                                    合唱團、清大管樂社合作舉辦過三場大型音樂會。號召同儕發起清大資工兒童電腦邏
+                                    輯一日營並擔任營長，服務新竹市區國小學童，提升學校對外形象。平時參與系上排
+                                    球隊的練習，並擔任男排隊長帶領隊伍獲得新生盃冠軍。參與系上活動擔任迎新營活
+                                    動股長，專司三天營隊活動內容企劃。為了增進語文能力和開拓的視野，2009 暑期曾
+                                    隻身前往美國加州大學 Davis 分校參加「Intensive English」課程，經營了不同國家的人
+                                    脈，也磨練陌生環境的適應力。
+                                    諸多的課外嘗試並未影響學業成績，有效地分配利用時間和戮力以赴讓我得以兼
+                                    顧，更鍛鍊了與人溝通協調和時間規劃的能力。多采多姿的活動不但增進琴藝、強化
+                                    體能，也培養出團隊合作和領導的能力。同時更加祈望能將課裡課外一切所學的知識
+                                    與能力運用在未來的研究領域，期許自我對新的學術環境有所貢獻。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" id="conclusion">
+                    <div class="col-xs-12 dark-theme">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <h2 class="profile-title"><span class="glyphicon glyphicon-hand-right"></span>結 語</h2>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <p class="profile-personal">我對於人生未來目標明確瞭解，一直很清楚自己希望獲得什麼、要什麼，積極尋
+                                    求機會表現和不斷的學習使我能持續精進自我能力。
+                                    活潑樂觀讓我面臨挑戰時有足夠的抗壓性；靈活的思考更能細膩的分析問題，凡
+                                    事展現企圖心和行動力做到最好是我所堅持的信念。最後非常感謝教授委員閱讀這一
+                                    篇文章，以上是我的能力、我的態度及我的人生，希望能博取各位教授委員的認同，
+                                    順利獲得貴校肯定。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="plan" id="plan">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <h2 class="profile-title"><span class="glyphicon glyphicon-hand-right"></span>未來規劃</h2>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="timeline">
+                                    <div class="container left">
+                                        <div class="content">
+                                            <h2 class="plan-h2"><span class="glyphicon glyphicon-bullhorn"></span>入學前</h2> 
+                                            <div class="row plan-p-row plan-row-first">
+                                                <div class="col-xs-6 plan-p">
+                                                    <h5><span class="glyphicon glyphicon-calendar">排程</span></h5>
+                                                </div>
+                                                <div class="col-xs-6 plan-p">
+                                                    <h5><span class="glyphicon glyphicon-pushpin">目的</span></h5>
+                                                </div>
+                                            </div>       
+                                            <div class="row plan-p-row">
+                                                <div class="col-xs-6 plan-p">
+                                                    <p>修習更多系上課程</p>
+                                                </div>
+                                                <div class="col-xs-6 plan-p">
+                                                    <p>加強自身領域的專業知識及廣度</p>
+                                                </div>
+                                            </div>       
+                                            <div class="row plan-p-row">
+                                                <div class="col-xs-6 plan-p">
+                                                    <p>參加系上／校外專題展比賽</p>
+                                                </div>
+                                                <div class="col-xs-6 plan-p">
+                                                    <p>增強實戰統合經驗及行銷能力</p>
+                                                </div>
+                                            </div>       
+                                            <div class="row plan-p-row">
+                                                <div class="col-xs-6 plan-p">
+                                                    <p>爭取企業實習機會</p>
+                                                </div>
+                                                <div class="col-xs-6 plan-p">
+                                                    <p>了解公司運作體系，增加工作經驗</p>
+                                                </div>
+                                            </div>       
+                                            <div class="row plan-p-row">
+                                                <div class="col-xs-6 plan-p">
+                                                    <p>參加國際志工</p>
+                                                </div>
+                                                <div class="col-xs-6 plan-p">
+                                                    <p>投身志工行列，訓練英文實戰能力</p>
+                                                </div>
+                                            </div>                                           
+                                        </div>
+                                    </div>
+                                    <div class="container right">
+                                        <div class="content">
+                                            <h2 class="plan-h2"><span class="glyphicon glyphicon-bullhorn"></span>碩一上</h2>
+                                            <div class="row plan-p-row plan-row-first">
+                                                <div class="col-xs-6 plan-p">
+                                                    <h5><span class="glyphicon glyphicon-calendar">排程</span></h5>
+                                                </div>
+                                                <div class="col-xs-6 plan-p">
+                                                    <h5><span class="glyphicon glyphicon-pushpin">目的</span></h5>
+                                                </div>
+                                            </div>       
+                                            <div class="row plan-p-row">
+                                                <div class="col-xs-6 plan-p">
+                                                    <p>接觸研究 HCI & Graphic</p>
+                                                </div>
+                                                <div class="col-xs-6 plan-p">
+                                                    <p>加深對感興趣領域的了解和知識</p>
+                                                </div>
+                                            </div>       
+                                            <div class="row plan-p-row">
+                                                <div class="col-xs-6 plan-p">
+                                                    <p>廣閱相關論文，與指導教授討論</p>
+                                                </div>
+                                                <div class="col-xs-6 plan-p">
+                                                    <p>盡快確立研究主題和方向</p>
+                                                </div>
+                                            </div>       
+                                            <div class="row plan-p-row">
+                                                <div class="col-xs-6 plan-p">
+                                                    <p>修習專業基礎知識</p>
+                                                </div>
+                                                <div class="col-xs-6 plan-p">
+                                                    <p>多方涉略，尋找感興趣的研究主題</p>
+                                                </div>
+                                            </div>       
+                                            <div class="row plan-p-row">
+                                                <div class="col-xs-6 plan-p">
+                                                    <p>參與產學合作計畫</p>
+                                                </div>
+                                                <div class="col-xs-6 plan-p">
+                                                    <p>接觸業界計劃，訓練解決問題能力</p>
+                                                </div>
+                                            </div>  
+                                            <div class="row plan-p-row">
+                                                <div class="col-xs-6 plan-p">
+                                                    <p>持續增進英文能力</p>
+                                                </div>
+                                                <div class="col-xs-6 plan-p">
+                                                    <p>為將來出國的可能性準備</p>
+                                                </div>
+                                            </div>  
+                                        </div>
+                                    </div>
+                                    <div class="container left">
+                                        <div class="content">
+                                            <h2 class="plan-h2"><span class="glyphicon glyphicon-bullhorn"></span>碩一下</h2>
+                                            <div class="row plan-p-row plan-row-first">
+                                                <div class="col-xs-6 plan-p">
+                                                    <h5><span class="glyphicon glyphicon-calendar">排程</span></h5>
+                                                </div>
+                                                <div class="col-xs-6 plan-p">
+                                                    <h5><span class="glyphicon glyphicon-pushpin">目的</span></h5>
+                                                </div>
+                                            </div>       
+                                            <div class="row plan-p-row">
+                                                <div class="col-xs-6 plan-p">
+                                                    <p>初步決定研究題目</p>
+                                                </div>
+                                                <div class="col-xs-6 plan-p">
+                                                    <p>及早開始準備，拉長研究時間</p>
+                                                </div>
+                                            </div>       
+                                            <div class="row plan-p-row">
+                                                <div class="col-xs-6 plan-p">
+                                                    <p>報考 TOEFL 或 TOEIC</p>
+                                                </div>
+                                                <div class="col-xs-6 plan-p">
+                                                    <p>語文能力文憑，出國持續進修門票</p>
+                                                </div>
+                                            </div>       
+                                            <div class="row plan-p-row">
+                                                <div class="col-xs-6 plan-p">
+                                                    <p>預備撰寫碩士論文</p>
+                                                </div>
+                                                <div class="col-xs-6 plan-p">
+                                                    <p>初步設計雛型版型以利往後發展</p>
+                                                </div>
+                                            </div>       
+                                            <div class="row plan-p-row">
+                                                <div class="col-xs-6 plan-p">
+                                                    <p>擔任教學助教</p>
+                                                </div>
+                                                <div class="col-xs-6 plan-p">
+                                                    <p>接觸教學領域</p>
+                                                </div>
+                                            </div>  
+                                        </div>
+                                    </div>
+                                    <div class="container right">
+                                        <div class="content">
+                                            <h2 class="plan-h2"><span class="glyphicon glyphicon-bullhorn"></span>碩二上</h2>
+                                            <div class="row plan-p-row plan-row-first">
+                                                <div class="col-xs-6 plan-p">
+                                                    <h5><span class="glyphicon glyphicon-calendar">排程</span></h5>
+                                                </div>
+                                                <div class="col-xs-6 plan-p">
+                                                    <h5><span class="glyphicon glyphicon-pushpin">目的</span></h5>
+                                                </div>
+                                            </div>       
+                                            <div class="row plan-p-row">
+                                                <div class="col-xs-6 plan-p">
+                                                    <p>專注論文研究</p>
+                                                </div>
+                                                <div class="col-xs-6 plan-p">
+                                                    <p>專心撰寫論文，展現學習成果</p>
+                                                </div>
+                                            </div>       
+                                            <div class="row plan-p-row">
+                                                <div class="col-xs-6 plan-p">
+                                                    <p>參與產學合作計畫</p>
+                                                </div>
+                                                <div class="col-xs-6 plan-p">
+                                                    <p>接觸業界計劃，累積創業資本</p>
+                                                </div>
+                                            </div>       
+                                            <div class="row plan-p-row">
+                                                <div class="col-xs-6 plan-p">
+                                                    <p>碩士論文初版</p>
+                                                </div>
+                                                <div class="col-xs-6 plan-p">
+                                                    <p>預留時間空間修改增進</p>
+                                                </div>
+                                            </div>  
+                                        </div>
+                                    </div>
+                                    <div class="container left">
+                                        <div class="content">
+                                            <h2 class="plan-h2"><span class="glyphicon glyphicon-bullhorn"></span>碩二下</h2>
+                                            <div class="row plan-p-row plan-row-first">
+                                                <div class="col-xs-6 plan-p">
+                                                    <h5><span class="glyphicon glyphicon-calendar">排程</span></h5>
+                                                </div>
+                                                <div class="col-xs-6 plan-p">
+                                                    <h5><span class="glyphicon glyphicon-pushpin">目的</span></h5>
+                                                </div>
+                                            </div>       
+                                            <div class="row plan-p-row">
+                                                <div class="col-xs-6 plan-p">
+                                                    <p>碩士論文終版</p>
+                                                </div>
+                                                <div class="col-xs-6 plan-p">
+                                                    <p>達成研究里程碑</p>
+                                                </div>
+                                            </div>       
+                                            <div class="row plan-p-row">
+                                                <div class="col-xs-6 plan-p">
+                                                    <p>抉擇並準備未來</p>
+                                                </div>
+                                                <div class="col-xs-6 plan-p">
+                                                    <p>累計足夠實力與視野，謀定而後動</p>
+                                                </div>
+                                            </div>    
+                                        </div>
+                                    </div>
+                                    <div class="container right">
+                                        <div class="content">
+                                            <h2 class="plan-h2"><span class="glyphicon glyphicon-bullhorn"></span>畢業後</h2>
+                                            <div class="row plan-p-row plan-row-first">
+                                                <div class="col-xs-6 plan-p">
+                                                    <h5><span class="glyphicon glyphicon-calendar">排程</span></h5>
+                                                </div>
+                                                <div class="col-xs-6 plan-p">
+                                                    <h5><span class="glyphicon glyphicon-pushpin">目的</span></h5>
+                                                </div>
+                                            </div>       
+                                            <div class="row plan-p-row">
+                                                <div class="col-xs-6 plan-p">
+                                                    <p>考量國內攻讀博士</p>
+                                                </div>
+                                                <div class="col-xs-6 plan-p">
+                                                    <p>留讀 NTU</p>
+                                                </div>
+                                            </div>       
+                                            <div class="row plan-p-row">
+                                                <div class="col-xs-6 plan-p">
+                                                    <p>考量出國進修</p>
+                                                </div>
+                                                <div class="col-xs-6 plan-p">
+                                                    <p>申請 MIT</p>
+                                                </div>
+                                            </div>  
+                                            <div class="row plan-p-row">
+                                                <div class="col-xs-6 plan-p">
+                                                    <p>考量合夥創業</p>
+                                                </div>
+                                                <div class="col-xs-6 plan-p">
+                                                    <p>朝生醫電子領域發展</p>
+                                                </div>
+                                            </div>  
+                                            <div class="row plan-p-row">
+                                                <div class="col-xs-6 plan-p">
+                                                    <p>考量國內職場</p>
+                                                </div>
+                                                <div class="col-xs-6 plan-p">
+                                                    <p>軟體公司、外商公司</p>
+                                                </div>
+                                            </div>  
+                                            <div class="row plan-p-row">
+                                                <div class="col-xs-6 plan-p">
+                                                    <p>考量國外電影業</p>
+                                                </div>
+                                                <div class="col-xs-6 plan-p">
+                                                    <p>Pixar、Legendary</p>
+                                                </div>
+                                            </div>
+                                            <div class="row plan-p-row">
+                                                <div class="col-xs-6 plan-p">
+                                                    <p>考量國外遊戲業</p>
+                                                </div>
+                                                <div class="col-xs-6 plan-p">
+                                                    <p>Blizzard、SEGA</p>
+                                                </div>
+                                            </div>  
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="history" id="history">
+                <div class="row">
+                    <div class="col-xs-12 dark-theme">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <h2 class="profile-title">歷年修課成果</h2>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div id="historyCarousel" class="carousel slide" data-ride="carousel">
+
+                                    <ol class="carousel-indicators">
+                                        <li data-target="#historyCarousel" data-slide-to="0" class="active"></li>
+                                        <li data-target="#historyCarousel" data-slide-to="1"></li>
+                                        <li data-target="#historyCarousel" data-slide-to="2"></li>
+                                        <li data-target="#historyCarousel" data-slide-to="3"></li>
+                                        <li data-target="#historyCarousel" data-slide-to="4"></li>
+                                        <li data-target="#historyCarousel" data-slide-to="5"></li>
+                                        <li data-target="#historyCarousel" data-slide-to="6"></li>
+                                        <li data-target="#historyCarousel" data-slide-to="7"></li>
+                                    </ol>
+
+                                    <div class="carousel-inner">
+                                        <div class="item active">
+                                            <img class="img-responsive" src="https://imgur.com/Eij2Ffq.png">
+                                            <div class="carousel-caption">
+                                                <h3>計算機程式設計</h3>
+                                                <p>「The Frogs」以 C 開發，控制青蛙過河，電腦具 AI</p>
+                                            </div>
+                                        </div>
+                                        <div class="item">
+                                            <img class="img-responsive" src="https://imgur.com/juEk9bp.png">
+                                            <div class="carousel-caption">
+                                                <h3>軟體實驗</h3>
+                                                <p>「House Claws」是一款 2D Android Game，以手勢控制貓咪閃躲障礙物前進。</p>
+                                            </div>
+                                        </div>
+                                        <div class="item">
+                                            <img class="img-responsive" src="https://imgur.com/2iaLh8I.png">
+                                            <div class="carousel-caption">
+                                                <h3>硬體實驗</h3>
+                                                <p>「Death Rush」是用 VHDL 開發的生存遊戲，控制主角閃避敵襲，燒在 FPGA ( Board:EVS6 )上。</p>
+                                            </div>
+                                        </div>
+                                        <div class="item">
+                                            <img class="img-responsive" src="https://imgur.com/7AHWthi.png">
+                                            <div class="carousel-caption">
+                                                <h3>3D 建模設計</h3>
+                                                <p>「Angry Birds Volleyball」是由 3ds Max 製作的 3D 影片。( ppt.cc/H9z1 )</p>
+                                            </div>
+                                        </div>
+                                        <div class="item">
+                                            <img class="img-responsive" src="https://imgur.com/KhuvDMx.png">
+                                            <div class="carousel-caption">
+                                                <h3>多媒體技術概論</h3>
+                                                <p>實作「Non-Local Means Denoising」去除雜訊還原影像，並與其他方法比較。</p>
+                                            </div>
+                                        </div>
+                                        <div class="item">
+                                            <img class="img-responsive" src="https://imgur.com/2OIWOqR.png">
+                                            <div class="carousel-caption">
+                                                <h3>Web 程式設計</h3>
+                                                <p>「Cat Slime」是款 RPG 遊戲，用 Javascript、CSS、HTML 開發，具流暢華麗的打鬥體驗。( ppt.cc/xRER )</p>
+                                            </div>
+                                        </div>
+                                        <div class="item">
+                                            <img class="img-responsive" src="https://imgur.com/FrJoK6S.png">
+                                            <div class="carousel-caption">
+                                                <h3>嵌入式繪圖程式設計</h3>
+                                                <p>「Model Flow」是一個讓使用者能輕鬆觀看 3D 模型的精致瀏覽程式。</p>
+                                            </div>
+                                        </div>
+                                        <div class="item">
+                                            <img class="img-responsive" src="https://imgur.com/0s8jEvL.png">
+                                            <div class="carousel-caption">
+                                                <h3>畢業專題</h3>
+                                                <p>「Fixit – Boo’s Museum Adventure」是我們專題團隊「J & P」開發的 Android App。</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                            
+                                    <a class="left carousel-control" href="#historyCarousel" data-slide="prev">
+                                        <span class="glyphicon glyphicon-chevron-left"></span>
+                                        <span class="sr-only">Previous</span>
+                                    </a>
+                                    <a class="right carousel-control" href="#historyCarousel" data-slide="next">
+                                        <span class="glyphicon glyphicon-chevron-right"></span>
+                                        <span class="sr-only">Next</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="swot" id="swot">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <h2 class="profile-title">自我 SWOT 分析</h2>
+                            </div>
+                        </div>
+                        <div class="row swot-row">
+                            <div class="col-xs-6">
+                                <h3 class="personal-swot-h3"><span class="glyphicon glyphicon-thumbs-up"></span>優勢</h3>
+                                <p class="personal-swot-p">專業能力優異</p>
+                                <p class="personal-swot-p">積極正向的態度且抗壓性強</p>
+                                <p class="personal-swot-p">人際關係良好</p>
+                                <p class="personal-swot-p">團隊合作和領導能力強</p>
+                                <p class="personal-swot-p">善於時間規劃，有前瞻力</p>
+                                <p class="personal-swot-p">心思細膩，善於察言觀色</p>
+                            </div>
+                            <div class="col-xs-6">
+                                <h3 class="personal-swot-h3"><span class="glyphicon glyphicon-thumbs-down"></span>劣勢</h3>
+                                <p class="personal-swot-p">自我要求過高</p>
+                                <p class="personal-swot-p">有未完成任務時易焦慮</p>
+                                <p class="personal-swot-p">下放任務不放心</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <h3 class="personal-swot-h3"><span class="glyphicon glyphicon-screenshot"></span>機會</h3>
+                                <p class="personal-swot-p">碩士推甄重視在校成績</p>
+                                <p class="personal-swot-p">擔任團隊領導經驗豐富</p>
+                                <p class="personal-swot-p">擁有國外進修經驗</p>
+                                <p class="personal-swot-p">積極爭取學習機會</p>
+                            </div>
+                            <div class="col-xs-6">
+                                <h3 class="personal-swot-h3"><span class="glyphicon glyphicon-exclamation-sign"></span>威脅</h3>
+                                <p class="personal-swot-p">熱門科系競爭者眾多</p>
+                                <p class="personal-swot-p">相同條件且專業能力更優異者</p>
+                                <p class="personal-swot-p">未來就業市場飽和</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="grade" id="grade">
+                <div class="row">
+                    <div class="col-xs-12 dark-theme">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <h2 class="profile-title">學業成績</h2>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <h2 class="profile-personal">學年</h2>
+                            </div>
+                            <div class="col-xs-2">
+                                <h2 class="profile-personal">GPA</h2>
+                            </div>
+                            <div class="col-xs-2">
+                                <h2 class="profile-personal">修習學分</h2>
+                            </div>
+                            <div class="col-xs-2">
+                                <h2 class="profile-personal">修課數</h2>
+                            </div>
+                            <div class="col-xs-3">
+                                <h2 class="profile-personal">名次／班人數</h2>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <h2 class="profile-personal">099上</h2>
+                            </div>
+                            <div class="col-xs-2">
+                                <h2 class="profile-personal">4.19</h2>
+                            </div>
+                            <div class="col-xs-2">
+                                <h2 class="profile-personal">22</h2>
+                            </div>
+                            <div class="col-xs-2">
+                                <h2 class="profile-personal">10</h2>
+                            </div>
+                            <div class="col-xs-3">
+                                <h2 class="profile-personal">1／43</h2>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <h2 class="profile-personal">099下</h2>
+                            </div>
+                            <div class="col-xs-2">
+                                <h2 class="profile-personal">4.15</h2>
+                            </div>
+                            <div class="col-xs-2">
+                                <h2 class="profile-personal">20</h2>
+                            </div>
+                            <div class="col-xs-2">
+                                <h2 class="profile-personal">9</h2>
+                            </div>
+                            <div class="col-xs-3">
+                                <h2 class="profile-personal">1／42</h2>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <h2 class="profile-personal">100上</h2>
+                            </div>
+                            <div class="col-xs-2">
+                                <h2 class="profile-personal">4.30</h2>
+                            </div>
+                            <div class="col-xs-2">
+                                <h2 class="profile-personal">19</h2>
+                            </div>
+                            <div class="col-xs-2">
+                                <h2 class="profile-personal">8</h2>
+                            </div>
+                            <div class="col-xs-3">
+                                <h2 class="profile-personal">1／45</h2>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <h2 class="profile-personal">100下</h2>
+                            </div>
+                            <div class="col-xs-2">
+                                <h2 class="profile-personal">4.26</h2>
+                            </div>
+                            <div class="col-xs-2">
+                                <h2 class="profile-personal">24</h2>
+                            </div>
+                            <div class="col-xs-2">
+                                <h2 class="profile-personal">10</h2>
+                            </div>
+                            <div class="col-xs-3">
+                                <h2 class="profile-personal">1／43</h2>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <h2 class="profile-personal">101上</h2>
+                            </div>
+                            <div class="col-xs-2">
+                                <h2 class="profile-personal">4.30</h2>
+                            </div>
+                            <div class="col-xs-2">
+                                <h2 class="profile-personal">16</h2>
+                            </div>
+                            <div class="col-xs-2">
+                                <h2 class="profile-personal">7</h2>
+                            </div>
+                            <div class="col-xs-3">
+                                <h2 class="profile-personal">1／42</h2>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <h2 class="profile-personal">101下</h2>
+                            </div>
+                            <div class="col-xs-2">
+                                <h2 class="profile-personal">4.30</h2>
+                            </div>
+                            <div class="col-xs-2">
+                                <h2 class="profile-personal">16</h2>
+                            </div>
+                            <div class="col-xs-2">
+                                <h2 class="profile-personal">8</h2>
+                            </div>
+                            <div class="col-xs-3">
+                                <h2 class="profile-personal">1／42</h2>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <h2 class="profile-personal">102上</h2>
+                            </div>
+                            <div class="col-xs-2">
+                                <h2 class="profile-personal">4.20</h2>
+                            </div>
+                            <div class="col-xs-2">
+                                <h2 class="profile-personal">9</h2>
+                            </div>
+                            <div class="col-xs-2">
+                                <h2 class="profile-personal">4</h2>
+                            </div>
+                            <div class="col-xs-3">
+                                <h2 class="profile-personal">2／40</h2>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <h2 class="grade-h2"><span class="glyphicon glyphicon-star"></span>累計系排名／總人數、累計班排名／總人數、平均 GPA： 1／150、1／50、4.24</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+
+            var prevScrollposition = window.pageYOffset;
+            window.onscroll = function() {
+                var currentScrollPosition = window.pageYOffset;
+                if (prevScrollposition > currentScrollPosition) {
+                    document.getElementsByClassName("header")[0].style.top = "0" ;
+                } else {
+                    document.getElementsByClassName("header")[0].style.top = "-100";
+                }
+                prevScrollposition = currentScrollPosition;
+            }
+
+            // Select all links with hashes
+            // Remove links that don't actually link to anything
+            $('a[href*="#"]').not('[href="#"]').not('[href="#0"]').click(function(event) {
+                // On-page links
+                if ( location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname ) {
+                    // Figure out element to scroll to
+                    var target = $(this.hash);
+                    
+                    // Does a scroll target exist?
+                    if (target.length) {
+                        // Only prevent default if animation is actually gonna happen
+                        event.preventDefault();
+                        $('html, body').animate({
+                            scrollTop: target.offset().top
+                        }, 1000, function() {
+
+                        // Callback after animation
+                        // Must change focus!
+                        var $target = $(target);
+                        $target.focus();
+                        
+                        });
+                    }
+                }
+            });
+
+        });
+    </script>
+</html>

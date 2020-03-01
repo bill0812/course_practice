@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- ELEMENT with children -->
+
+<!ELEMENT 綜合所得稅申報表 (說明,納稅義務人不必填寫之區塊,
+    申報注意事項,申請人之時間地域確認,納稅義務人及免稅額,綜合所得總額各類,扣除額,綜合所得淨額運算區,稅額計算式*,存款帳戶退稅,信用卡繳稅,表格外之資訊)>
+
+<!ELEMENT 納稅義務人不必填寫之區塊 (格式,機關,服務區,箱冊號,頁號)>
+
+<!ELEMENT 申報注意事項 (說明+,狀態)>
+
+<!ELEMENT 納稅義務人及免稅額 (納稅義務人DD,配偶SS,申報時戶籍地,退補稅通知送達處,聯絡電話,扶養親屬,免稅額+,免稅額總額)>
+
+<!ELEMENT 納稅義務人DD (姓名,身份證統一編號,出生年次,身心障礙)>
+
+<!ELEMENT 配偶SS (姓名,身份證統一編號,出生年次,身心障礙)>
+
+<!ELEMENT 申報時戶籍地 (縣市,區域,村里,鄰,街路,其他細節*)>
+<!ATTLIST 申報時戶籍地 承租 (是|否) "否">
+
+<!ELEMENT 退補稅通知送達處 (縣市,區域,村里,鄰,街路,其他細節*)>
+
+<!ELEMENT 聯絡電話 (電話號碼+)>
+
+<!ELEMENT 扶養親屬 (登錄代號+)>
+
+<!ELEMENT 登錄代號 (姓名,身份證統一編號,稱謂,出生年次,同居,在學,身心障礙)>
+
+<!ELEMENT 免稅額 (種類,人數,共計,稽徵機關審核人數)>
+
+<!ELEMENT 綜合所得總額各類 (所得+,金額項目)>
+
+<!ELEMENT 所得 (所得人+)>
+
+<!ELEMENT 所得人 (姓名*,總額*,可扣繳稅額或可扣抵稅額*,全年總收入*,扣繳稅額*,全年薪資所得總額*,可扣除額*)>
+
+<!ELEMENT 金額項目 (納稅義務人各類所得總額,配偶各類所得總額,綜合所得總額總計,全部扣繳稅額或可扣抵稅額)>
+
+<!ELEMENT 扣除額 (扣除項目*,扣除額之全部扣除額)>
+
+<!ELEMENT 扣除項目 (說明,所得人*,小計,審核機關審核)>
+
+<!ELEMENT 扣除額之全部扣除額 (小計,審核機關審核)>
+
+<!ELEMENT 綜合所得淨額運算區 (計算式)>
+
+<!ELEMENT 計算式 (綜合所得總額|全部免稅額|全部扣除額|綜合所得淨額|
+    所得稅淨額|稅率|累進差額|應納稅額|全部扣繳稅額及可扣抵稅額|
+    應退還稅額|應自行繳納稅額|薪資分開計稅者之薪資所得|薪資分開計稅者之免稅額|
+    薪資分開計稅者之薪資所得扣除額|薪資分開計稅者之薪資所得淨額|
+    薪資分開計稅部分之應納稅額|不含薪資分開計稅部分之所得淨額|不含薪資分開計稅部分之應納稅額|
+    各類所得分開計稅者之各類所得|各類所得分開計稅者之免稅額|各類所得分開計稅者之薪資所得扣除額|
+    各類所得分開計稅者之儲蓄投資特別扣除額|各類所得分開計稅者之身心障礙特別扣除額|各類所得分開計稅者之各類所得淨額|
+    各類所得分開計稅部分之應納稅額|稅額計算式之免稅額|稅額計算式之扣除額|
+    不含各類所得分開計稅部分之所得淨額|不含各類所得分開計稅部分之應納稅額)*>
+
+<!ELEMENT 稅額計算式 (說明,名稱,計算式*,稽徵機關審核)>
+
+<!ELEMENT 存款帳戶退稅 (帳戶資料,郵局,特別選項)>
+
+<!ELEMENT 帳戶資料 (說明,姓名,身份證統一編號,金融機構,稽徵機關標符,帳號)>
+
+<!ELEMENT 金融機構 (總機構,分支機構)>
+
+<!ELEMENT 帳號 (行分別,科目,編戶號,檢支號)>
+
+<!ELEMENT 郵局 (局名,存簿儲金,劃撥儲存金帳號)>
+
+<!ELEMENT 存簿儲金 (局號,存簿儲金帳號)>
+
+<!ELEMENT 特別選項 (說明,選項)>
+
+<!ELEMENT 信用卡繳稅 (說明,BV,授權號碼,持卡人)>
+
+<!ELEMENT 表格外之資訊 (上表格,下表格)>
+
+<!ELEMENT 上表格 (說明+,納稅義務人簽章或蓋章,附件區,稽徵機關收件戳記與日期)>
+
+<!ELEMENT 下表格 (說明+,收件人與地址,附件區,稽徵機關收件戳記與日期)>
+
+<!ELEMENT 附件區 (說明*,附件內容*)>
+
+<!ELEMENT 收件人與地址 (姓名,縣市,區域,村里,鄰,街路,其他細節*)>
+
+<!-- PCDATA with ELEMENT -->
+
+<!ELEMENT 說明 (#PCDATA)>
+
+<!ELEMENT 狀態 (#PCDATA)>
+
+<!ELEMENT 申請人之時間地域確認 (#PCDATA)>
+<!ATTLIST 申請人之時間地域確認 狀態 (打勾|不勾) "不勾">
+
+<!ELEMENT 格式 (#PCDATA)>
+<!ELEMENT 機關 (#PCDATA)>
+<!ELEMENT 服務區 (#PCDATA)>
+<!ELEMENT 箱冊號 (#PCDATA)>
+<!ELEMENT 頁號 (#PCDATA)>
+
+<!ELEMENT 姓名 (#PCDATA)>
+<!ELEMENT 身份證統一編號 (#PCDATA)>
+<!ELEMENT 出生年次 (#PCDATA)>
+<!ELEMENT 身心障礙 EMPTY>
+<!ATTLIST 身心障礙 狀態 (打勾|不勾) "不勾">
+
+<!ELEMENT 稱謂 (#PCDATA)>
+<!ELEMENT 同居 EMPTY>
+<!ELEMENT 在學 EMPTY>
+<!ATTLIST 同居 狀態 (打勾|不勾) "不勾">
+<!ATTLIST 在學 狀態 (打勾|不勾) "不勾">
+
+<!ELEMENT 縣市 (#PCDATA)>
+<!ELEMENT 區域 (#PCDATA)>
+<!ELEMENT 村里 (#PCDATA)>
+<!ELEMENT 鄰 (#PCDATA)>
+<!ELEMENT 街路 (#PCDATA)>
+<!ELEMENT 其他細節 (#PCDATA)>
+<!ATTLIST 其他細節 屬性 (段|巷|弄|號|樓|之) #REQUIRED>
+
+<!ATTLIST 退補稅通知送達處 狀態 (同上|none) "none">
+
+<!ELEMENT 電話號碼 (#PCDATA)>
+
+<!ATTLIST 登錄代號 id (D01|D02|D03|D04|D05|D06) "D01">
+
+<!ELEMENT 種類 (#PCDATA)>
+<!ELEMENT 人數 (#PCDATA)>
+<!ELEMENT 共計 (#PCDATA)>
+<!ELEMENT 稽徵機關審核人數 (#PCDATA)>
+
+<!ELEMENT 免稅額總額 (#PCDATA)>
+
+<!ATTLIST 所得 種類 (薪資所得|利息所得|營利所得|福利金|18萬以下稿費|none) "none">
+
+<!ELEMENT 總額 (#PCDATA)>
+<!ELEMENT 可扣繳稅額或可扣抵稅額 (#PCDATA)>
+<!ELEMENT 全年總收入 (#PCDATA)>
+<!ELEMENT 扣繳稅額 (#PCDATA)>
+
+<!ELEMENT 納稅義務人各類所得總額 (#PCDATA)>
+<!ELEMENT 配偶各類所得總額 (#PCDATA)>
+<!ELEMENT 綜合所得總額總計 (#PCDATA)>
+<!ELEMENT 全部扣繳稅額或可扣抵稅額 (#PCDATA)>
+
+<!ATTLIST 扣除項目 種類 (薪資所得特別扣除額|儲蓄特資特別扣除額|標準扣除額|身心障礙特別扣除額|教育學費別扣除額|幼兒學前特別扣除額|none) "none">
+<!ATTLIST 所得人 種類 (納稅義務人|配偶|全部受扶養親屬|none) "none">
+<!ELEMENT 全年薪資所得總額 (#PCDATA)>
+<!ELEMENT 可扣除額 (#PCDATA)>
+<!ELEMENT 小計 (#PCDATA)>
+<!ELEMENT 審核機關審核 (#PCDATA)>
+
+<!ELEMENT 綜合所得總額 (#PCDATA)>
+<!ELEMENT 全部免稅額 (#PCDATA)>
+<!ELEMENT 全部扣除額 (#PCDATA)>
+<!ELEMENT 綜合所得淨額 (#PCDATA)>
+<!ELEMENT 所得稅淨額 (#PCDATA)>
+<!ELEMENT 稅率 (#PCDATA)>
+<!ELEMENT 累進差額 (#PCDATA)>
+<!ELEMENT 應納稅額 (#PCDATA)>
+<!ELEMENT 全部扣繳稅額及可扣抵稅額 (#PCDATA)>
+<!ELEMENT 應退還稅額 (#PCDATA)>
+<!ELEMENT 應自行繳納稅額 (#PCDATA)>
+<!ELEMENT 薪資分開計稅者之薪資所得 (#PCDATA)>
+<!ELEMENT 薪資分開計稅者之免稅額 (#PCDATA)>
+<!ELEMENT 薪資分開計稅者之薪資所得扣除額 (#PCDATA)>
+<!ELEMENT 薪資分開計稅者之薪資所得淨額 (#PCDATA)>
+<!ELEMENT 薪資分開計稅部分之應納稅額 (#PCDATA)>
+<!ELEMENT 不含薪資分開計稅部分之所得淨額 (#PCDATA)>
+<!ELEMENT 不含薪資分開計稅部分之應納稅額 (#PCDATA)>
+<!ELEMENT 各類所得分開計稅者之各類所得 (#PCDATA)>
+<!ELEMENT 各類所得分開計稅者之免稅額 (#PCDATA)>
+<!ELEMENT 各類所得分開計稅者之薪資所得扣除額 (#PCDATA)>
+<!ELEMENT 各類所得分開計稅者之儲蓄投資特別扣除額 (#PCDATA)>
+<!ELEMENT 各類所得分開計稅者之身心障礙特別扣除額 (#PCDATA)>
+<!ELEMENT 各類所得分開計稅者之各類所得淨額 (#PCDATA)>
+<!ELEMENT 各類所得分開計稅部分之應納稅額 (#PCDATA)>
+<!ELEMENT 稅額計算式之免稅額 (#PCDATA)>
+<!ELEMENT 稅額計算式之扣除額 (#PCDATA)>
+<!ELEMENT 不含各類所得分開計稅部分之所得淨額 (#PCDATA)>
+<!ELEMENT 不含各類所得分開計稅部分之應納稅額 (#PCDATA)>
+
+<!ATTLIST 綜合所得總額 運算 (加|減|乘|除|none) #REQUIRED>
+<!ATTLIST 全部免稅額 運算 (加|減|乘|除|none) #REQUIRED>
+<!ATTLIST 全部扣除額 運算 (加|減|乘|除|none) #REQUIRED>
+<!ATTLIST 綜合所得淨額 運算 (加|減|乘|除|none) #REQUIRED>
+<!ATTLIST 所得稅淨額 運算 (加|減|乘|除|none) #REQUIRED>
+<!ATTLIST 稅率 運算 (加|減|乘|除|none) #REQUIRED>
+<!ATTLIST 累進差額 運算 (加|減|乘|除|none) #REQUIRED>
+<!ATTLIST 應納稅額 運算 (加|減|乘|除|none) #REQUIRED>
+<!ATTLIST 全部扣繳稅額及可扣抵稅額 運算 (加|減|乘|除|none) #REQUIRED>
+<!ATTLIST 應退還稅額 運算 (加|減|乘|除|none) #REQUIRED>
+<!ATTLIST 應自行繳納稅額 運算 (加|減|乘|除|none) #REQUIRED>
+<!ATTLIST 薪資分開計稅者之薪資所得 運算 (加|減|乘|除|none) #REQUIRED>
+<!ATTLIST 薪資分開計稅者之免稅額 運算 (加|減|乘|除|none) #REQUIRED>
+<!ATTLIST 薪資分開計稅者之薪資所得扣除額 運算 (加|減|乘|除|none) #REQUIRED>
+<!ATTLIST 薪資分開計稅者之薪資所得淨額 運算 (加|減|乘|除|none) #REQUIRED>
+<!ATTLIST 薪資分開計稅部分之應納稅額 運算 (加|減|乘|除|none) #REQUIRED>
+<!ATTLIST 不含薪資分開計稅部分之所得淨額 運算 (加|減|乘|除|none) #REQUIRED>
+<!ATTLIST 不含薪資分開計稅部分之應納稅額 運算 (加|減|乘|除|none) #REQUIRED>
+<!ATTLIST 各類所得分開計稅者之各類所得 運算 (加|減|乘|除|none) #REQUIRED>
+<!ATTLIST 各類所得分開計稅者之免稅額 運算 (加|減|乘|除|none) #REQUIRED>
+<!ATTLIST 各類所得分開計稅者之薪資所得扣除額 運算 (加|減|乘|除|none) #REQUIRED>
+<!ATTLIST 各類所得分開計稅者之儲蓄投資特別扣除額 運算 (加|減|乘|除|none) #REQUIRED>
+<!ATTLIST 各類所得分開計稅者之身心障礙特別扣除額 運算 (加|減|乘|除|none) #REQUIRED>
+<!ATTLIST 各類所得分開計稅者之各類所得淨額 運算 (加|減|乘|除|none) #REQUIRED>
+<!ATTLIST 各類所得分開計稅部分之應納稅額 運算 (加|減|乘|除|none) #REQUIRED>
+<!ATTLIST 稅額計算式之免稅額 運算 (加|減|乘|除|none) #REQUIRED>
+<!ATTLIST 稅額計算式之扣除額 運算 (加|減|乘|除|none) #REQUIRED>
+<!ATTLIST 不含各類所得分開計稅部分之所得淨額 運算 (加|減|乘|除|none) #REQUIRED>
+<!ATTLIST 不含各類所得分開計稅部分之應納稅額 運算 (加|減|乘|除|none) #REQUIRED>
+
+<!ATTLIST 綜合所得總額 符號 CDATA #FIXED "AA">
+<!ATTLIST 全部免稅額 符號 CDATA #FIXED "DM">
+<!ATTLIST 全部扣除額 符號 CDATA #FIXED "AB1">
+<!ATTLIST 綜合所得淨額 符號 CDATA #FIXED "AE">
+<!ATTLIST 全部扣繳稅額及可扣抵稅額 符號 CDATA #FIXED "AG">
+<!ATTLIST 應納稅額 符號 CDATA #FIXED "AF">
+<!ATTLIST 應退還稅額 符號 CDATA #FIXED "AI">
+<!ATTLIST 應自行繳納稅額 符號 CDATA #FIXED "AH">
+<!ATTLIST 薪資分開計稅者之薪資所得 符號 CDATA #FIXED "AD">
+<!ATTLIST 各類所得分開計稅者之各類所得 符號 CDATA #FIXED "YT">
+
+<!ATTLIST 應退還稅額 狀態 (打勾|不勾) "不勾">
+<!ATTLIST 應自行繳納稅額 狀態 (打勾|不勾) "不勾">
+
+<!ATTLIST 稅額計算式之免稅額 屬性 CDATA "不含各類所得分開計稅者之免稅額">
+<!ATTLIST 稅額計算式之扣除額 屬性 CDATA "不含各類所得分開計稅者之已減除之扣除額">
+
+<!ATTLIST 稅額計算式 種類 (合併計算稅額|薪資所得分開計算稅額|各類所得分開計算稅額|none) "none">
+<!ATTLIST 稅額計算式 狀態 (打勾|不勾) "不勾">
+<!ELEMENT 名稱 (#PCDATA)>
+<!ELEMENT 稽徵機關審核 (#PCDATA)>
+
+<!ELEMENT 稽徵機關標符 (#PCDATA)>
+
+<!ELEMENT 總機構 (#PCDATA)>
+<!ELEMENT 分支機構 (#PCDATA)>
+
+<!ELEMENT 行分別 (#PCDATA)>
+<!ELEMENT 科目 (#PCDATA)>
+<!ELEMENT 編戶號 (#PCDATA)>
+<!ELEMENT 檢支號 (#PCDATA)>
+
+<!ELEMENT 局名 (#PCDATA)>
+<!ELEMENT 局號 (#PCDATA)>
+<!ELEMENT 存簿儲金帳號 (#PCDATA)>
+<!ATTLIST 存簿儲金 代號 CDATA #IMPLIED>
+<!ELEMENT 劃撥儲存金帳號 (#PCDATA)>
+<!ATTLIST 局名 郵局 CDATA #IMPLIED>
+<!ATTLIST 局名 支局 CDATA #IMPLIED>
+<!ATTLIST 劃撥儲存金帳號 代號 CDATA #IMPLIED>
+
+<!ELEMENT 選項 EMPTY>
+<!ATTLIST 選項 狀態 CDATA #IMPLIED>
+
+<!ELEMENT BV EMPTY>
+<!ELEMENT 授權號碼 (#PCDATA)>
+<!ELEMENT 持卡人 (#PCDATA)>
+<!ATTLIST BV value CDATA #IMPLIED>
+<!ATTLIST 持卡人 選項 (納稅義務人DD|配偶SS|none) "none">
+
+<!ELEMENT 納稅義務人簽章或蓋章 (#PCDATA)>
+<!ATTLIST 附件區 狀態 (無|有) "無">
+<!ELEMENT 附件內容 (#PCDATA)>
+<!ATTLIST 附件內容 張數 CDATA #IMPLIED>
+<!ELEMENT 稽徵機關收件戳記與日期 (#PCDATA)>
