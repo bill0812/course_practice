@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "# by count\nggplot(data = diamonds) +\n  geom_count(mapping = aes(x = cut, y = color))\n\n# similar to heatmap\ndiamonds %>% \n  count(color, cut) %>%  \n  ggplot(mapping = aes(x = color, y = cut)) +\n  geom_tile(mapping = aes(fill = n))\n\n# two continuous variables\nggplot(data = diamonds) +\n  geom_point(mapping = aes(x = carat, y = price))\n\n# add transparency\nggplot(data = diamonds) + \n  geom_point(mapping = aes(x = carat, y = price), alpha = 1 / 100)\n\n# rectangular bins\nggplot(data = smaller) +\n  geom_bin2d(mapping = aes(x = carat, y = price))\n\n# bin one continuous variable into a categorical variable\nggplot(data = smaller, mapping = aes(x = carat, y = price)) + \n  geom_boxplot(mapping = aes(group = cut_width(carat, 0.1)))",
+    "created" : 1493089657138.000,
+    "dirty" : false,
+    "encoding" : "ASCII",
+    "folds" : "",
+    "hash" : "1715360410",
+    "id" : "839DC10E",
+    "lastKnownWriteTime" : 1493090794,
+    "last_content_update" : 1493090794407,
+    "path" : "~/Dropbox/13_NCCU/courses/DataScienceInPractice_資料科學實務/105.2/codes/codes10/twoVariables.R",
+    "project_path" : null,
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 6,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

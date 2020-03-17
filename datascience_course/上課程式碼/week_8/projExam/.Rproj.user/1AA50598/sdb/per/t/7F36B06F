@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "x=matrix (rnorm (30*3) , ncol =3)\ndd=as.dist(1- cor(t(x)))\nplot(hclust (dd, method =\"complete\"), main=\" Complete Linkage with Correlation -Based Distance \", xlab=\"\", sub =\"\")",
+    "created" : 1511232029030.000,
+    "dirty" : false,
+    "encoding" : "ASCII",
+    "folds" : "",
+    "hash" : "130102035",
+    "id" : "7F36B06F",
+    "lastKnownWriteTime" : 1511167837,
+    "last_content_update" : 1511167837,
+    "path" : "~/Dropbox/13_NCCU/courses/DataScienceInPractice_資料科學實務/1061/codes/code11/hclust_correbase.R",
+    "project_path" : null,
+    "properties" : {
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

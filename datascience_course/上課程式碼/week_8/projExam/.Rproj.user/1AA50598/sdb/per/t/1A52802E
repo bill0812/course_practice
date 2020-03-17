@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "# read data\nprotein <- read.table(\"protein.txt\", sep=\"\\t\", header=TRUE)\n\n# scale your data\nvars.to.use <- colnames(protein)[-1]\npmatrix <- scale(protein[,vars.to.use])\npcenter <- attr(pmatrix, \"scaled:center\")\npscale <- attr(pmatrix, \"scaled:scale\")\n\n# Hierarchical clustering\nd <- dist(pmatrix, method=\"euclidean\")\npfit <- hclust(d, method=\"ward\")\nplot(pfit, labels=protein$Country)\n\n# The dendrogram suggests five clusters = > draw the rectangles on the dendrogram\nrect.hclust(pfit, k=5)\n\n# Extracting the clusters found by hclust()\ngroups <- cutree(pfit, k=5)\nprint_clusters <- function(labels, k) {\n  for(i in 1:k) {\n    print(paste(\"cluster\", i))\n    print(protein[labels==i,c(\"Country\",\"RedMeat\",\"Fish\",\"Fr.Veg\")])\n  }\n}\nprint_clusters(groups, 5)\n\n# VISUALIZING CLUSTERS by PCA\nlibrary(ggplot2)\nprinc <- prcomp(pmatrix)\nnComp <- 4\nproject <- predict(princ, newdata=pmatrix)[,1:nComp]\n\nproject.plus <- cbind(as.data.frame(project),\n                      cluster=as.factor(groups),\n                      country=protein$Country)\n\nggplot(project.plus, aes(x=PC1, y=PC2)) +\n  geom_point(aes(shape=cluster)) +\n  geom_text(aes(label=country),\n            hjust=0, vjust=1)\n\nggplot(project.plus, aes(x=PC3, y=PC4)) +\n  geom_point(aes(shape=cluster)) +\n  geom_text(aes(label=country),\n            hjust=0, vjust=1)\n\n# k-means\nlibrary(fpc)\nkbest.p<-5\npclusters <- kmeans(pmatrix, kbest.p, nstart=100, iter.max=100)\npclusters\npclusters$centers\npclusters$size\ngroups <- pclusters$cluster\nprint_clusters(groups, kbest.p)\n\n# Running clusterboot() with hclust\ncboot.hclust <- clusterboot(pmatrix, clustermethod=hclustCBI,method=\"ward.D\", k=kbest.p)\nsummary(cboot.hclust$result)\ngroups<-cboot.hclust$result$partition\nprint_clusters(groups, kbest.p)\ncboot.hclust$bootmean\ncboot.hclust$bootbrd\n\n# Running clusterboot() with k-means\ncboot<-clusterboot(pmatrix, clustermethod=kmeansCBI, runs=100,iter.max=100, krange=kbest.p, seed=15555)\ngroups <- cboot$result$partition\nprint_clusters(cboot$result$partition, kbest.p)\ncboot$bootmean\ncboot$bootbrd\n\n# Evaluating clusterings with different numbers of clusters\nlibrary(reshape2)\nsource(\"../CH.R\")\nsource(\"../WSS.R\")\nclustcrit <- ch_criterion(pmatrix, 10, method=\"hclust\")\ncritframe <- data.frame(k=1:10, ch=scale(clustcrit$crit), wss=scale(clustcrit$wss))\ncritframe <- melt(critframe, id.vars=c(\"k\"), variable.name=\"measure\", value.name=\"score\")\nggplot(critframe, aes(x=k, y=score, color=measure)) +\n  geom_point(aes(shape=measure)) + geom_line(aes(linetype=measure)) +\n  scale_x_continuous(breaks=1:10, labels=1:10)\n\n# THE KMEANSRUNS FUNCTION FOR PICKING K\nclustering.ch <- kmeansruns(pmatrix, krange=1:10, criterion=\"ch\")\nclustering.ch$bestk\nclustering.ch$crit\nclustering.asw <- kmeansruns(pmatrix, krange=1:10, criterion=\"asw\")\nclustering.asw$bestk\ncritframe <- data.frame(k=1:10, ch=scale(clustering.ch$crit),\n                        asw=scale(clustering.asw$crit))\ncritframe <- melt(critframe, id.vars=c(\"k\"), variable.name=\"measure\", value.name=\"score\")\nggplot(critframe, aes(x=k, y=score, color=measure)) +geom_point(aes(shape=measure)) + geom_line(aes(linetype=measure)) + scale_x_continuous(breaks=1:10, labels=1:10)\n  ",
+    "created" : 1511232130437.000,
+    "dirty" : false,
+    "encoding" : "ASCII",
+    "folds" : "",
+    "hash" : "2352542432",
+    "id" : "1A52802E",
+    "lastKnownWriteTime" : 1511147529,
+    "last_content_update" : 1511147529,
+    "path" : "~/Dropbox/13_NCCU/courses/DataScienceInPractice_資料科學實務/1061/codes/code11/protein/protein.R",
+    "project_path" : null,
+    "properties" : {
+    },
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

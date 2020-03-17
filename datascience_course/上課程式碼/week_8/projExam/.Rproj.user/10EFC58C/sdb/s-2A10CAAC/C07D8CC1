@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "library(tidyverse)\nheights <- read_csv(\"heights.csv\")\n\n# an inline csv file\nread_csv(\"a,b,c\n1,2,3\n4,5,6\")\n\n# a few lines of metadata at the top of the file\nread_csv(\"The first line of metadata\n  The second line of metadata\n         x,y,z\n         1,2,3\", skip = 2)\n\nread_csv(\"# A comment I want to skip\n  x,y,z\n         1,2,3\", comment = \"#\")\n\n# The data might not have column names.\nread_csv(\"1,2,3\\n4,5,6\", col_names = FALSE)\n\nread_csv(\"1,2,3\\n4,5,6\", col_names = c(\"x\", \"y\", \"z\"))",
+    "created" : 1493092116127.000,
+    "dirty" : false,
+    "encoding" : "ASCII",
+    "folds" : "",
+    "hash" : "3520970209",
+    "id" : "C07D8CC1",
+    "lastKnownWriteTime" : 1493092312,
+    "last_content_update" : 1493092312382,
+    "path" : "~/Dropbox/13_NCCU/courses/DataScienceInPractice_資料科學實務/105.2/codes/codes10/importData.R",
+    "project_path" : null,
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 8,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

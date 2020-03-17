@@ -4,3 +4,9 @@
 [submodule "machine_deep_learning/machine_learning_course/captcha_breaker"]
 	path = machine_deep_learning/machine_learning_course/captcha_breaker
 	url = https://github.com/wuling31715/captcha_breaker.git
+[submodule "hw2-bill0812"]
+	path = hw2-bill0812
+	url = https://github.com/1082-datascience/hw2-bill0812.git
+[submodule "datascience_course/hw2-bill0812"]
+	path = datascience_course/hw2-bill0812
+	url = https://github.com/1082-datascience/hw2-bill0812.git

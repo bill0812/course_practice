@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "library(\"ggplot2\")\n# won’t supply those names. That saves typing, and, by reducing the amount of boilerplate, makes it easier to see what’s different between plots\nggplot(data = faithful, mapping = aes(x = eruptions)) + \n  geom_freqpoly(binwidth = 0.25)\n\nggplot(faithful, aes(eruptions)) + \n  geom_freqpoly(binwidth = 0.25)",
+    "created" : 1493091090225.000,
+    "dirty" : false,
+    "encoding" : "ASCII",
+    "folds" : "",
+    "hash" : "1422976282",
+    "id" : "22055DD3",
+    "lastKnownWriteTime" : 1493091146,
+    "last_content_update" : 1493091146886,
+    "path" : "~/Dropbox/13_NCCU/courses/DataScienceInPractice_資料科學實務/105.2/codes/codes10/ggplot.R",
+    "project_path" : null,
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 7,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "library(tidyverse)\nchallenge <- read_csv(readr_example(\"challenge.csv\"))\nwrite_csv(challenge, \"challenge.csv\")\n\n# store data in R’s custom binary format called RDS\nwrite_rds(challenge, \"challenge.rds\")\nread_rds(\"challenge.rds\")\n\n# write_rds() vs. save()\nmod <- lm(mpg ~ wt, data = mtcars)\nmod\n\nsave(mod, file = \"mymodel.rda\")\nls()\nload(file = \"mymodel.rda\")\nls()\n\nsaveRDS(mod, \"mymodel.rds\")\nmod2 <- readRDS(\"mymodel.rds\")\nls()\nidentical(mod, mod2, ignore.environment = TRUE)\n",
+    "created" : 1493092605805.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "4205774405",
+    "id" : "41EB495C",
+    "lastKnownWriteTime" : 1493093354,
+    "last_content_update" : 1493093354110,
+    "path" : "~/Dropbox/13_NCCU/courses/DataScienceInPractice_資料科學實務/105.2/codes/codes10/writeData.R",
+    "project_path" : null,
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 9,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

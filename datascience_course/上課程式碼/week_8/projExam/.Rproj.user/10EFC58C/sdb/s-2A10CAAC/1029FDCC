@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "getwd()\nlibrary(tidyverse)\n\nggplot(diamonds, aes(carat, price)) + \n  geom_hex()\nggsave(\"diamonds.pdf\")\n\nwrite_csv(diamonds, \"diamonds.csv\")\n",
+    "created" : 1493085765530.000,
+    "dirty" : false,
+    "encoding" : "ASCII",
+    "folds" : "",
+    "hash" : "3902657916",
+    "id" : "1029FDCC",
+    "lastKnownWriteTime" : 1493085804,
+    "last_content_update" : 1493085804648,
+    "path" : "~/Dropbox/13_NCCU/courses/DataScienceInPractice_資料科學實務/105.2/codes/codes10/projExam/diamonds.R",
+    "project_path" : "diamonds.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

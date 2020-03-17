@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "# Calculating total within sum of squares\nsqr_edist <- function(x, y) {\n  sum((x-y)^2)\n}\n\nwss.cluster <- function(clustermat) {\n  c0 <- apply(clustermat, 2, FUN=mean)\n  sum(apply(clustermat, 1, FUN=function(row){sqr_edist(row,c0)}))\n}\n\nwss.total <- function(dmatrix, labels) {\n  wsstot <- 0\n  k <- length(unique(labels))\n  for(i in 1:k)\n    wsstot <- wsstot + wss.cluster(subset(dmatrix, labels==i))\n  wsstot\n}\n",
+    "created" : 1511232038285.000,
+    "dirty" : false,
+    "encoding" : "ASCII",
+    "folds" : "",
+    "hash" : "1540576972",
+    "id" : "DDADAAD9",
+    "lastKnownWriteTime" : 1494218066,
+    "last_content_update" : 1494218066,
+    "path" : "~/Dropbox/13_NCCU/courses/DataScienceInPractice_資料科學實務/1061/codes/code11/WSS.R",
+    "project_path" : null,
+    "properties" : {
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

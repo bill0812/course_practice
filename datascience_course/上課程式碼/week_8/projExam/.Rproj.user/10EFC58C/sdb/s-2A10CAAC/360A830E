@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "# how the price of a diamond varies with its quality?\n# It’s hard to see the difference in distribution because the overall counts differ so much:\nggplot(data = diamonds, mapping = aes(x = price)) + \n  geom_freqpoly(mapping = aes(colour = cut), binwidth = 500)\n\n# use density, that the area under each frequency polygon is one.\nggplot(data = diamonds, mapping = aes(x = price, y = ..density..)) + \n  geom_freqpoly(mapping = aes(colour = cut), binwidth = 500)\n\n# by boxplot\nggplot(data = diamonds, mapping = aes(x = cut, y = price)) +\n  geom_boxplot()",
+    "created" : 1493088465475.000,
+    "dirty" : false,
+    "encoding" : "ASCII",
+    "folds" : "",
+    "hash" : "1658800685",
+    "id" : "360A830E",
+    "lastKnownWriteTime" : 1493089042,
+    "last_content_update" : 1493089042033,
+    "path" : "~/Dropbox/13_NCCU/courses/DataScienceInPractice_資料科學實務/105.2/codes/codes10/covariation.R",
+    "project_path" : null,
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 4,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

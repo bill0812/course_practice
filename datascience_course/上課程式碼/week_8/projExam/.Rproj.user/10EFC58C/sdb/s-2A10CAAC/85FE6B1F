@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "# oevrall\nggplot(diamonds) + \n  geom_histogram(mapping = aes(x = y), binwidth = 0.5)\n\n# zoom in\nggplot(diamonds) + \n  geom_histogram(mapping = aes(x = y), binwidth = 0.5) +\n  coord_cartesian(ylim = c(0, 50))\n\nunusual <- diamonds %>% \n  filter(y < 3 | y > 20) %>% \n  arrange(y)\nunusual\n\n\n# 1. drop them\ndiamonds2 <- diamonds %>% \n  filter(between(y, 3, 20))\n\n# 2. mutate\ndiamonds2 <- diamonds %>% \n  mutate(y = ifelse(y < 3 | y > 20, NA, y))\n\nggplot(data = diamonds2, mapping = aes(x = x, y = y)) + \n  geom_point()",
+    "created" : 1493087873033.000,
+    "dirty" : false,
+    "encoding" : "ASCII",
+    "folds" : "",
+    "hash" : "2564209456",
+    "id" : "85FE6B1F",
+    "lastKnownWriteTime" : 1493088299,
+    "last_content_update" : 1493088299869,
+    "path" : "~/Dropbox/13_NCCU/courses/DataScienceInPractice_資料科學實務/105.2/codes/codes10/unusual.R",
+    "project_path" : null,
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

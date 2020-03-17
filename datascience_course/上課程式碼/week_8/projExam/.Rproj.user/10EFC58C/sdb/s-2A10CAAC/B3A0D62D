@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "library(tidyverse)\n\n# plot\nggplot(data = diamonds) + \n geom_bar(mapping = aes(x = cut))\n\n# count \ndiamonds %>% \n  count(cut)\n\n# A variable is continuous \nggplot(data = diamonds) +\n  geom_histogram(mapping = aes(x = carat), binwidth = 0.5)\n\n# count\ndiamonds %>% \n  count(cut_width(carat, 0.5))\n\n#overlay multiple histograms in the same plot\nsmaller <- diamonds %>% \n  filter(carat < 3)\nggplot(data = smaller, mapping = aes(x = carat, colour = cut)) +\n  geom_freqpoly(binwidth = 0.1)",
+    "created" : 1493087003282.000,
+    "dirty" : false,
+    "encoding" : "ASCII",
+    "folds" : "",
+    "hash" : "1909196352",
+    "id" : "B3A0D62D",
+    "lastKnownWriteTime" : 1493087428,
+    "last_content_update" : 1493087428362,
+    "path" : "~/Dropbox/13_NCCU/courses/DataScienceInPractice_資料科學實務/105.2/codes/codes10/visVariation.R",
+    "project_path" : null,
+    "properties" : {
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
