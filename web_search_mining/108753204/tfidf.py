@@ -4,7 +4,7 @@ from textblob import TextBlob as tb
 
 def tf(all_word, blob):
     return 0.5 + 0.5 * all_word/np.max(all_word)
-    # return np.log(1+all_word)
+    return np.log(1+all_word)
     # return all_word / len(blob)
 
 def n_containing(all_word, bloblist):

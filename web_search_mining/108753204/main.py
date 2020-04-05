@@ -7,7 +7,7 @@ import nltk
 
 # import other useful packages
 from VectorSpace import VectorSpace
-from tfidf_np import *
+from tfidf import *
 from util import *
 
 # global variable
@@ -17,7 +17,8 @@ TYEPS = [
         "Term Frequency (TF) Weighting + Cosine Similarity",
         "Term Frequency (TF) Weighting + Euclidean Distance",
         "TF-IDF Weighting + Cosine Similarity",
-        "TF-IDF Weighting + Euclidean Distance"
+        "TF-IDF Weighting + Euclidean Distance",
+        "Feedback Queries + TF-IDF Weighting + Cosine Similarity"
         ]
 
 def get_args():
@@ -59,7 +60,6 @@ def get_tf_vector(all_content, tf_vector, doc_vector, key_word_index, doc_tb_vec
     return tf_vector, doc_tb_vector
 
 def get_idf_vector(doc_count, index_key_word, doc_tb_vector, all_content):
-    idf_vector = np.zeros(len(index_key_word))
     idf_vector = idf(index_key_word.values(), doc_tb_vector)
     return idf_vector
 
@@ -76,29 +76,35 @@ def get_final_vector(tf_vector, idf_vector, query_vector):
     final_tfidf_vector = np.einsum('ij, ij->ij', tf_vector, idf_vector)
     return final_tf_vector, final_tfidf_vector, final_query_tf, final_query_tfidf, idf_vector
 
-def check_feedback(final_result, all_id, mapped_content, data, idf_vector, key_word_index):
-    first_id = final_result.keys()[0]
-    fisrt_content = mapped_content[fisrt_id]
-    pos_vector = [0] * len(data[0])
-    for index, word in enumerate(fisrt_content):
-        tag = ntlk.pos_tag(word)
-        if tag in ["NN", "VB"] and tag in key_word_index.keys():
-            pos_vector[tag] += 1
-    
-    feedback_vector = np.einsum('ij, ij->ij', pos_vector, idf_vector)
-    new_query_vector = numpy.add(data[1], numpy.multiply(0.5, feedback_vector))
+def check_feedback(final_result, all_id, mapped_content, data, idf_vector, final_tf_vector, key_word_index, index_key_word, doc_tb_vector, final_query_tf):
+    first_id = list(final_result.keys())[0]
+    first_content = list()
+    for index, word_count in enumerate(final_tf_vector[np.where(np.array(all_id) == first_id)[0][0]]):
+        if word_count > 0 :
+            word = index_key_word[index]
+            first_content.append(word)
+    pos_vector = [0] * len(idf_vector[0])
+    for index, word in enumerate(first_content):
+        tag = nltk.pos_tag([word])
+        if tag[0][1] in ["NN", "VB"] and word in list(key_word_index.keys()):
+            word_id = key_word_index[word]
+            pos_vector[word_id] = final_tf_vector[np.where(np.array(all_id) == first_id)[0][0]][word_id]
+    pos_vector = np.array(pos_vector)
+    idf_vector.shape = (len(idf_vector[0]),) 
+    feedback_vector = np.einsum('i, i->i', pos_vector, idf_vector)
+    new_query_vector = np.add(data[1], np.multiply(0.5, feedback_vector))
     each_dst = [cosine(new_query_vector, each_doc_vector) for each_doc_vector in data[0]]
-    final_result = {k: v for k, v in sorted(mapped_result.items(), key=lambda item:item[1], reverse=True)}
     mapped_result = dict(zip(list(all_id), list(each_dst)))
     final_result = {k: v for k, v in sorted(mapped_result.items(), key=lambda item:item[1], reverse=True)}
     return final_result
 
-def get_print_distance(final_tf_vector, final_tfidf_vector, final_query_tf, final_query_tfidf, feedback, all_content, idf_vector, key_word_index):
+def get_print_distance(final_tf_vector, final_tfidf_vector, final_query_tf, final_query_tfidf, feedback, doc_tb_vector, idf_vector, key_word_index, index_key_word):
     all_operation = {
                 "1" : [final_tf_vector, final_query_tf],
                 "2" : [final_tf_vector, final_query_tf],
                 "3" : [final_tfidf_vector, final_query_tfidf],
                 "4" : [final_tfidf_vector, final_query_tfidf],
+                "5" : [final_tfidf_vector, final_query_tfidf]
             }
     for idx, (each_kind, data) in enumerate(all_operation.items()):
         each_dst = 0
@@ -112,8 +118,8 @@ def get_print_distance(final_tf_vector, final_tfidf_vector, final_query_tf, fina
         else :
             final_result = {k: v for k, v in sorted(mapped_result.items(), key=lambda item:item[1], reverse=False)}    
         if each_kind == "5" and feedback:
-            mapped_content = dict(zip((list(all_id),list(all_content))))
-            final_result = check_feedback(final_result, all_id, mapped_content, data, idf_vector, key_word_index)
+            mapped_content = dict(zip(list(all_id),list(doc_tb_vector)))
+            final_result = check_feedback(final_result, all_id, mapped_content, data, idf_vector, final_tf_vector,key_word_index, index_key_word, doc_tb_vector, final_query_tf)
     
         print("DocID    Score   {}".format(TYEPS[idx]))
         for result_idx, (key, value) in enumerate(final_result.items()) :
@@ -130,6 +136,7 @@ if __name__ == "__main__":
     doc_path = os.path.join(DOC_DIR, "*."+FILE_TYPE)
     print("Using Query: {}".format(query))
     print("Processing: {}".format(doc_path))
+    print("Feedback or not: {}".format(feedback))
     print("====================================")
     
     # get all docs
@@ -151,7 +158,7 @@ if __name__ == "__main__":
     final_tf_vector, final_tfidf_vector, final_query_tf, final_query_tfidf, idf_vector = get_final_vector(tf_vector, idf_vector, query_vector)
     
     # calculate distance
-    get_print_distance(final_tf_vector, final_tfidf_vector, final_query_tf, final_query_tfidf, feedback, all_content, idf_vector, key_word_index)
+    get_print_distance(final_tf_vector, final_tfidf_vector, final_query_tf, final_query_tfidf, feedback, doc_tb_vector, idf_vector, key_word_index, index_key_word)
     
     # retrieve spending time
     end = time.time()
