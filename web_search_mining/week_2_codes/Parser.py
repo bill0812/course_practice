@@ -2,7 +2,6 @@
 from PorterStemmer import PorterStemmer
 
 class Parser:
-
 	#A processor for removing the commoner morphological and inflexional endings from words in English
 	stemmer=None
 
