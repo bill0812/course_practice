@@ -85,21 +85,20 @@ https://github.com/bill0812/course_study/tree/master/web_search_mining/108753204
     ##### Here, I'll introduce the tfidf and utils python file, because this two play important roles in the result.
 
     1. [tfidf.py](tfidf.py):
+            
+            - raw count : <img src="http://latex.codecogs.com/gif.latex?\dpi{80}&space;\huge&space;$\mathcal{f}$_{t,d}" title="\huge $\mathcal{f}$_{t,d}" />
 
-        - tf : use three method (reference from wiki)
-            - raw count : <img src="http://latex.codecogs.com/gif.latex?\\$\mathcal{f}$_{t,d}" />
+            - term frequency : <img src="http://latex.codecogs.com/gif.latex?\dpi{80}&space;\huge&space;$\mathcal{f}$_{t,d}&space;/&space;\sum_{t^i&space;\in&space;d}&space;$\mathcal{f}$_{t^i,d}" title="\huge $\mathcal{f}$_{t,d} / \sum_{t^i \in d} $\mathcal{f}$_{t^i,d}" />
 
-            - term frequency : <img src="http://latex.codecogs.com/gif.latex?\\$\mathcal{f}$_{t,d} / \sum_{t^i \in d} $\mathcal{f}$_{t^i,d}" >
-
-            - log normalization	: <img src="http://latex.codecogs.com/gif.latex?\\\log(1+$\mathcal{f}$_{t,d})" >
+            - log normalization	: <img src="http://latex.codecogs.com/gif.latex?\dpi{80}&space;\huge&space;\log(1&plus;$\mathcal{f}$_{t,d})" title="\huge \log(1+$\mathcal{f}$_{t,d})" />
 
         - idf : use three method
 
-            - inverse document frequency : <img src="http://latex.codecogs.com/gif.latex?\\\log($\mathcal{N}$/$\mathcal{n}_{t}$)" >
+            - inverse document frequency : <img src="http://latex.codecogs.com/gif.latex?\dpi{80}&space;\huge&space;\log($\mathcal{N}$/$\mathcal{n}_{t}$)" title="\huge \log($\mathcal{N}$/$\mathcal{n}_{t}$)" />
 
-            - inverse document frequency smooth	: <img src="http://latex.codecogs.com/gif.latex?\\\log($\mathcal{N}$ / 1 + $\mathcal{n}_{t}$) + 1" >
+            - inverse document frequency smooth	: <img src="http://latex.codecogs.com/gif.latex?\dpi{80}&space;\huge&space;\log($\mathcal{N}$&space;/&space;1&space;&plus;&space;$\mathcal{n}_{t}$)&space;&plus;&space;1" title="\huge \log($\mathcal{N}$ / 1 + $\mathcal{n}_{t}$) + 1" />
 
-            - probabilistic inverse document frequency : <img src="http://latex.codecogs.com/gif.latex?\\\log($\mathcal{N}$ - $\mathcal{n}_{t}$ / $\mathcal{n}_{t}$)" >
+            - probabilistic inverse document frequency :<img src="http://latex.codecogs.com/gif.latex?\dpi{80}&space;\huge&space;\log($\mathcal{N}$&space;-&space;$\mathcal{n}_{t}$&space;/&space;$\mathcal{n}_{t}$)" title="\huge \log($\mathcal{N}$ - $\mathcal{n}_{t}$ / $\mathcal{n}_{t}$)" />
     
     2. [utils.py](utils.py):
 
