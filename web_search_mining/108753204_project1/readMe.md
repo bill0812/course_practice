@@ -54,7 +54,7 @@ https://github.com/bill0812/course_study/tree/master/web_search_mining/108753204
 
     ##### Simply run the command below :
     ```
-    $ python main.py --query="drill wood sharp"
+    $ python main.py --query(=)"drill wood sharp"
     ```
     
     ##### And some __Help__ for the [main.py](main.py):
