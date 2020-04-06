@@ -86,7 +86,7 @@
 
         - tf : use three method (reference from wiki)
 
-            - raw count : ![](http://latex.codecogs.com/gif.latex?\$\mathcal{f}$_{t,d})
+            - raw count : <img src="http://latex.codecogs.com/gif.latex?\\\$\mathcal{f}$_{t,d}" />
 
             - term frequency : $\mathcal{f}$_{t,d} / sum_{t^i \in d} $\mathcal{f}$_{t^i,d}
 
