@@ -1,5 +1,0 @@
-set,train,validation,test
-fold1,0.96,0.91,0.9
-fold2,0.96,0.91,0.91
-fold3,0.95,0.92,0.93
-ave.,0.96,0.91,0.91
