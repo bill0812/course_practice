@@ -159,4 +159,5 @@
     
     ##### Below is one of the results:
     
-    ![result.png](result.png =100x20)
+    ![](result.png =100*20)
+    <img src="result.png" width="100">
