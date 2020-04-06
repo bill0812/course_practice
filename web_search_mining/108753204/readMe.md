@@ -86,7 +86,7 @@
 
         - tf : use three method (reference from wiki)
 
-            - raw count : $\mathcal{f}$_{t,d}
+            - raw count : ![](http://latex.codecogs.com/gif.latex?\$\mathcal{f}$_{t,d})
 
             - term frequency : $\mathcal{f}$_{t,d} / sum_{t^i \in d} $\mathcal{f}$_{t^i,d}
 
@@ -159,5 +159,4 @@
     
     ##### Below is one of the results:
     
-    ![](./result.png =300x)
-    <img src="result.png" width="300">
+    <img src="result.png" width="750">
