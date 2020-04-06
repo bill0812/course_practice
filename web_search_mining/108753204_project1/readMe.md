@@ -86,6 +86,8 @@ https://github.com/bill0812/course_study/tree/master/web_search_mining/108753204
 
     1. [tfidf.py](tfidf.py):
             
+        - tf : use three method
+
             - raw count : <img src="http://latex.codecogs.com/gif.latex?\dpi{80}&space;\huge&space;$\mathcal{f}$_{t,d}" title="\huge $\mathcal{f}$_{t,d}" />
 
             - term frequency : <img src="http://latex.codecogs.com/gif.latex?\dpi{80}&space;\huge&space;$\mathcal{f}$_{t,d}&space;/&space;\sum_{t^i&space;\in&space;d}&space;$\mathcal{f}$_{t^i,d}" title="\huge $\mathcal{f}$_{t,d} / \sum_{t^i \in d} $\mathcal{f}$_{t^i,d}" />
