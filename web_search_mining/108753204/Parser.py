@@ -1,6 +1,7 @@
 #http://tartarus.org/~martin/PorterStemmer/python.txt
 from PorterStemmer import PorterStemmer
 
+# teacher's original code
 class Parser:
     stemmer=None
     stopwords=[]

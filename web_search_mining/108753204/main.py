@@ -1,9 +1,8 @@
 # import basic packages
 from glob import glob
 from argparse import ArgumentParser
-from textblob import TextBlob as tb
-import os, sys, time, numpy as np
-import nltk
+from argparse import RawTextHelpFormatter
+import os, sys, time, pickle, numpy as np
 
 # import other useful packages
 from VectorSpace import VectorSpace
@@ -11,22 +10,28 @@ from tfidf import *
 from util import *
 
 # global variable
+MODEL_PATH = "model.pickle"
 DOC_DIR = "documents"
 FILE_TYPE = "product"
-TYEPS = [
-        "Term Frequency (TF) Weighting + Cosine Similarity",
-        "Term Frequency (TF) Weighting + Euclidean Distance",
-        "TF-IDF Weighting + Cosine Similarity",
-        "TF-IDF Weighting + Euclidean Distance",
-        "Feedback Queries + TF-IDF Weighting + Cosine Similarity"
-        ]
+ALL_OPERATION = {
+        "Tearm Frequency (TF) Weighting + Cosine Similarity":["tf",cosine],
+        "Term Frequency (TF) Weighting + Euclidean Distance":["tf",euclidean_dist],
+        "TF-IDF Weighting + Cosine Similarity":["tfidf",cosine],
+        "TF-IDF Weighting + Euclidean Distance":["tfidf",euclidean_dist],
+        "Feedback Queries + TF-IDF Weighting + Cosine Similarity": ["tfidf", cosine]
+}
 
+# define all args we need
 def get_args():
-    parser = ArgumentParser('Project 1: Search and Rank via Vector Space Models.')
-    parser.add_argument('--query', required=True, dest="query", help="Enter your Query.")
-    parser.add_argument('--fb', action="store_true", help="Use it for feedback option")
+    parser = ArgumentParser('Project 1: Search and Rank via Vector Space Models.', formatter_class=RawTextHelpFormatter)
+    parser.add_argument('--query', metavar="'some query'", required=True, dest="query", help="Enter your Query.")
+    parser.add_argument("--tf", type=int, default=1, choices=[1,2,3], help="Choose tf method, \n1 for raw count.\n2 for term frequency.\n3 for log raw frequency.\nDefault is raw count")
+    parser.add_argument("--idf", type=int, default=1, choices=[1,2,3], help="Choose idf method.\n1 for inverse document frequency.\n2 for inverse document frequency smooth.\n4 for Probabilistic inverse document frequency.\nDefault is inverse document frequnecy")
     return parser.parse_args()
 
+# get all document, and sort them
+# return all content, id and document count.
+# Also, start counter
 def get_all_doc(doc_path):
     print("Start Processing...")
     start = time.time()
@@ -40,126 +45,56 @@ def get_all_doc(doc_path):
     doc_count = len(all_content)
     return all_content, all_id, doc_count, start
 
-def get_vsm(all_content):
-    vector_space = VectorSpace(all_content)   
-    assert len(vector_space.document_vectors) >= 1
-    tf_vector = np.zeros((doc_count, len(vector_space.document_vectors[0])))
-    doc_vector = np.asarray(vector_space.document_vectors)
-    key_word_index = vector_space.vector_keyword_index
-    index_key_word = vector_space.vector_index_keyword
-    doc_tb_vector = list()
-    return tf_vector, doc_vector, key_word_index, index_key_word, vector_space, doc_tb_vector
+# build svm model, return vector space model
+def get_vsm(all_content, all_id):
+    assert len(all_content) >= 1, "Document in the collection should be more than one"
+    try:
+        print('Try to load model......')
+        with open(MODEL_PATH, 'rb') as reader:
+            vector_space = pickle.load(reader)
+        print("Model Found !")
+    except FileNotFoundError:
+        print('Model not found......')
+        vector_space = VectorSpace(all_content, all_id)   
+        with open(MODEL_PATH, 'wb') as writer:
+            pickle.dump(vector_space, writer)
+        print('Save built model......')
 
-def get_tf_vector(all_content, tf_vector, doc_vector, key_word_index, doc_tb_vector): 
-    for idx, each_doc in enumerate(all_content) :
-        each_doc_tb = tb(each_doc).words
-        each_doc_vector = doc_vector[idx]
-        # tf_vector[idx] = each_doc_vector
-        tf_vector[idx] = tf(each_doc_vector, each_doc_tb)
-        doc_tb_vector.append(list(each_doc_tb))
-    return tf_vector, doc_tb_vector
-
-def get_idf_vector(doc_count, index_key_word, doc_tb_vector, all_content):
-    idf_vector = idf(index_key_word.values(), doc_tb_vector)
-    return idf_vector
-
-def get_query_vector(query,vector_space):
-    query_vector = np.array(vector_space.build_query_vector(query.split(' ')))
-    return query_vector
-
-def get_final_vector(tf_vector, idf_vector, query_vector):
-    final_query_tf = query_vector
-    final_tf_vector = tf_vector
-    idf_vector_original = idf_vector
-    final_query_tfidf = np.einsum('i, i->i', query_vector, idf_vector)
-    idf_vector.shape = (1, len(idf_vector))
-    final_tfidf_vector = np.einsum('ij, ij->ij', tf_vector, idf_vector)
-    return final_tf_vector, final_tfidf_vector, final_query_tf, final_query_tfidf, idf_vector
-
-def check_feedback(final_result, all_id, mapped_content, data, idf_vector, final_tf_vector, key_word_index, index_key_word, doc_tb_vector, final_query_tf):
-    first_id = list(final_result.keys())[0]
-    first_content = list()
-    for index, word_count in enumerate(final_tf_vector[np.where(np.array(all_id) == first_id)[0][0]]):
-        if word_count > 0 :
-            word = index_key_word[index]
-            first_content.append(word)
-    pos_vector = [0] * len(idf_vector[0])
-    for index, word in enumerate(first_content):
-        tag = nltk.pos_tag([word])
-        if tag[0][1] in ["NN", "VB"] and word in list(key_word_index.keys()):
-            word_id = key_word_index[word]
-            pos_vector[word_id] = final_tf_vector[np.where(np.array(all_id) == first_id)[0][0]][word_id]
-    pos_vector = np.array(pos_vector)
-    idf_vector.shape = (len(idf_vector[0]),) 
-    feedback_vector = np.einsum('i, i->i', pos_vector, idf_vector)
-    new_query_vector = np.add(data[1], np.multiply(0.5, feedback_vector))
-    each_dst = [cosine(new_query_vector, each_doc_vector) for each_doc_vector in data[0]]
-    mapped_result = dict(zip(list(all_id), list(each_dst)))
-    final_result = {k: v for k, v in sorted(mapped_result.items(), key=lambda item:item[1], reverse=True)}
-    return final_result
-
-def get_print_distance(final_tf_vector, final_tfidf_vector, final_query_tf, final_query_tfidf, feedback, doc_tb_vector, idf_vector, key_word_index, index_key_word):
-    all_operation = {
-                "1" : [final_tf_vector, final_query_tf],
-                "2" : [final_tf_vector, final_query_tf],
-                "3" : [final_tfidf_vector, final_query_tfidf],
-                "4" : [final_tfidf_vector, final_query_tfidf],
-                "5" : [final_tfidf_vector, final_query_tfidf]
-            }
-    for idx, (each_kind, data) in enumerate(all_operation.items()):
-        each_dst = 0
-        if idx%2 == 0:
-            each_dst = [cosine(data[1], each_doc_vector) for each_doc_vector in data[0]]
-        else :
-            each_dst = [euclidean_dist(data[1], each_doc_vector) for each_doc_vector in data[0]]
-        mapped_result = dict(zip(list(all_id), list(each_dst)))
-        if idx%2 == 0 :
-            final_result = {k: v for k, v in sorted(mapped_result.items(), key=lambda item:item[1], reverse=True)}
-        else :
-            final_result = {k: v for k, v in sorted(mapped_result.items(), key=lambda item:item[1], reverse=False)}    
-        if each_kind == "5" and feedback:
-            mapped_content = dict(zip(list(all_id),list(doc_tb_vector)))
-            final_result = check_feedback(final_result, all_id, mapped_content, data, idf_vector, final_tf_vector,key_word_index, index_key_word, doc_tb_vector, final_query_tf)
-    
-        print("DocID    Score   {}".format(TYEPS[idx]))
-        for result_idx, (key, value) in enumerate(final_result.items()) :
-            if result_idx == 5 :
-                break
-            print("{}   {}   ".format(key, round(value, 6)))
-        print("=======================")
+    return vector_space
 
 if __name__ == "__main__":
     
+    # get all variable and print out status
     args = get_args()
     query = args.query
-    feedback = args.fb
+    tf_method = args.tf
+    idf_method = args.idf
+    assert tf_method in [1,2,3] and idf_method in [1,2,3], "Wrong TF or IDF Method"
+    
+    # print info
     doc_path = os.path.join(DOC_DIR, "*."+FILE_TYPE)
     print("Using Query: {}".format(query))
     print("Processing: {}".format(doc_path))
-    print("Feedback or not: {}".format(feedback))
     print("====================================")
     
     # get all docs
     all_content, all_id, doc_count, start = get_all_doc(doc_path)
     
     # get vectorspace mode and its data
-    tf_vector, doc_vector, key_word_index, index_key_word, vector_space, doc_tb_vector  = get_vsm(all_content)
-
+    vector_space  = get_vsm(all_content, all_id)
+    
     # get tf vector
-    tf_vector, doc_tb_vector = get_tf_vector(all_content, tf_vector, doc_vector, key_word_index, doc_tb_vector)
+    tf_vector, raw_tf, doc_tb_vector = vector_space.get_tf_vector(all_content, tf_method)
     
     # count each doc's idf
-    idf_vector = get_idf_vector(doc_count, index_key_word, doc_tb_vector, all_content)
-
+    idf_vector = vector_space.get_idf_vector(idf_method)
+    
     # here for query indexing
-    query_vector = get_query_vector(query, vector_space)
+    query_vector = vector_space.get_query_vector(query)
     
-    # get final query and weighting
-    final_tf_vector, final_tfidf_vector, final_query_tf, final_query_tfidf, idf_vector = get_final_vector(tf_vector, idf_vector, query_vector)
-    
-    # calculate distance
-    get_print_distance(final_tf_vector, final_tfidf_vector, final_query_tf, final_query_tfidf, feedback, doc_tb_vector, idf_vector, key_word_index, index_key_word)
-    
+    # print result
+    vector_space.get_print_distance(ALL_OPERATION) 
+
     # retrieve spending time
     end = time.time()
     print(round(end - start, 2), "Seconds")

@@ -1,17 +1,33 @@
 from __future__ import division, unicode_literals
 import math, numpy as np
-from textblob import TextBlob as tb
+from textblob import TextBlob as t2
 
-def tf(all_word, blob):
-    return 0.5 + 0.5 * all_word/np.max(all_word)
-    return np.log(1+all_word)
-    # return all_word / len(blob)
+# different method of tf
+def tf(raw_tf, blob, method):
 
-def n_containing(all_word, bloblist):
-    return np.array([sum(1 for blob in bloblist if word in blob) for word in all_word])
+    if method == 1 :
+        return raw_tf
+    elif method == 2 :
+        return raw_tf / len(blob)
+    else :
+        return np.log(1+raw_tf)
 
-def idf(all_word, bloblist):
-    return np.log(len(bloblist) / (1 + n_containing(all_word, bloblist)))
+# calculate 'n_containing' in one line 
+def n_containing(all_word, all_tf):
+    count_index = np.zeros((len(all_tf[0])))
+    for each_doc in all_tf :
+        for index, count in enumerate(each_doc):
+            if count > 0 :
+                count_index[index] += 1
+    return count_index
 
-def tfidf(word, blob, bloblist):
-    return tf(word, blob) * idf(word, bloblist)
+# calculate different method of idf
+def idf(all_word, all_tf, method):
+    if method == 1 :
+        return np.log(len(all_tf) / (n_containing(all_word, all_tf)))
+    elif method == 2 :
+        return 1 + np.log(len(all_tf) / (1 + n_containing(all_word, all_tf)))
+    else :
+        n = n_containing(all_word, all_tf)
+        return np.log(len(all_tf)-n / n)
+
