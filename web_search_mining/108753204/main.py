@@ -26,7 +26,7 @@ def get_args():
     parser = ArgumentParser('Project 1: Search and Rank via Vector Space Models.', formatter_class=RawTextHelpFormatter)
     parser.add_argument('--query', metavar="'some query'", required=True, dest="query", help="Enter your Query.")
     parser.add_argument("--tf", type=int, default=1, choices=[1,2,3], help="Choose tf method, \n1 for raw count.\n2 for term frequency.\n3 for log raw frequency.\nDefault is raw count")
-    parser.add_argument("--idf", type=int, default=1, choices=[1,2,3], help="Choose idf method.\n1 for inverse document frequency.\n2 for inverse document frequency smooth.\n4 for Probabilistic inverse document frequency.\nDefault is inverse document frequnecy")
+    parser.add_argument("--idf", type=int, default=1, choices=[1,2,3], help="Choose idf method.\n1 for inverse document frequency.\n2 for inverse document frequency smooth.\n3 for Probabilistic inverse document frequency.\nDefault is inverse document frequnecy")
     return parser.parse_args()
 
 # get all document, and sort them
