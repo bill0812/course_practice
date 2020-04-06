@@ -142,16 +142,16 @@ https://github.com/bill0812/course_study/tree/master/web_search_mining/108753204
 
             - function
 
-        - Depends on each question, I do some operation for multiplying idf vector when needed. Then, I'll output final query vector and document vector.
+        - Depends on each question, I multiply idf vector when needed. Then, I'll output final query vector and document vector.
 
         - Especially for last question, I use the result from first query to get
           new query:
 
             - Get first place of result, and find its tf vector and id
 
-            - Based on its tf vector, I use NLTK's pos_tag function and vector's index to check if the keyowrd which is retrieved from 'vector_index_vector' is noun or verb. Besides, I also check the tf value of that index is greater than one.a
-
-            - After above, I'll asign the value of that index in new feedback query a raw count value.
+            - Based on its tf vector, I use NLTK's pos_tag function and the vector's index to get keywords which count is greater than one, and check if the keyowrds is noun or verb.
+            
+            - After above, I'll asign the value of that index in new feedback query a raw count value which is as same as in tf vector, and others are 0.
 
             - Finally, I use __[1 * original query + 0.5 * feedback query]__ to get new query. Then use this to calculate the distance and rank it.
 
