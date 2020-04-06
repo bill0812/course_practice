@@ -86,19 +86,19 @@
 
         - tf : use three method (reference from wiki)
 
-            - raw count : <img src="http://latex.codecogs.com/gif.latex?\\\$\mathcal{f}$_{t,d}" />
+            - raw count : <img src="http://latex.codecogs.com/gif.latex?\\$\mathcal{f}$_{t,d}" />
 
-            - term frequency : $\mathcal{f}$_{t,d} / sum_{t^i \in d} $\mathcal{f}$_{t^i,d}
+            - term frequency : <img src="http://latex.codecogs.com/gif.latex?\\$\mathcal{f}$_{t,d} / sum_{t^i \in d} $\mathcal{f}$_{t^i,d}" >
 
-            - log normalization	: \log(1 + $\mathcal{f}$_{t,d})
+            - log normalization	: <img src="http://latex.codecogs.com/gif.latex?\\$\log(1 + $\mathcal{f}$_{t,d})" >
 
         - idf : use three method
 
-            - inverse document frequency : \log($\mathcal{N}$ / $\mathcal{n}_{t}$)
+            - inverse document frequency : <img src="http://latex.codecogs.com/gif.latex?\\$\log($\mathcal{N}$ / $\mathcal{n}_{t}$)" >
 
-            - inverse document frequency smooth	: \log($\mathcal{N}$ / 1 + $\mathcal{n}_{t}$) + 1
+            - inverse document frequency smooth	: <img src="http://latex.codecogs.com/gif.latex?\\$\log($\mathcal{N}$ / 1 + $\mathcal{n}_{t}$) + 1" >
 
-            - probabilistic inverse document frequency : \log($\mathcal{N}$ - $\mathcal{n}_{t}$ / $\mathcal{n}_{t}$)
+            - probabilistic inverse document frequency : <img src="http://latex.codecogs.com/gif.latex?\\$\log($\mathcal{N}$ - $\mathcal{n}_{t}$ / $\mathcal{n}_{t}$)" >
 
     2. [utils.py](utils.py):
 
