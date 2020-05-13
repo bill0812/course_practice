@@ -10,3 +10,9 @@
 [submodule "datascience_course/hw3-bill0812"]
 	path = datascience_course/hw3-bill0812
 	url = https://github.com/1082-datascience/hw3-bill0812.git
+[submodule "datascience_course/hw4-bill0812"]
+	path = datascience_course/hw4-bill0812
+	url = https://github.com/1082-datascience/hw4-bill0812.git
+[submodule "datascience_course/hw5-bill0812"]
+	path = datascience_course/hw5-bill0812
+	url = https://github.com/1082-datascience/hw5-bill0812.git
